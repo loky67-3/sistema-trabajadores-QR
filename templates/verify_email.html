@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Verificar correo{% endblock %}
+
+{% block content %}
+<div class="auth-wrap">
+    <div class="auth-card">
+        <div class="auth-hero">
+            <h2>Verifica tu correo</h2>
+            <p>Ingresa el código que te enviamos a {{ email }} para completar tu registro.</p>
+        </div>
+        <div class="auth-body">
+            <form method="POST">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="code">Código de verificación</label>
+                        <input id="code" name="code" type="text" inputmode="numeric" maxlength="6" placeholder="Ej: 123456" required>
+                    </div>
+                </div>
+
+                <div style="margin-top: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <button type="submit" class="btn btn-primary">Confirmar código</button>
+                    <a href="{{ url_for('register_company') }}" style="color: var(--primary); font-weight: 700;">Volver al registro</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

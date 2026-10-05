@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Control de Personal{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="brand" aria-label="QR Company">
+                    <div class="brand-badge">Q</div>
+                    <div class="brand-text">
+                        <span class="brand-name">QR Company</span>
+                        <small class="brand-subtitle">Control de asistencia</small>
+                    </div>
+                </div>
+
+                <div class="nav-actions">
+                    {% if session.get('company_id') %}
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary" data-toast-message="Cargando dashboard...">Dashboard</a>
+                        <a href="{{ url_for('logout') }}" class="btn btn-danger" data-toast-message="Cerrando sesión...">Cerrar sesión</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="btn btn-secondary" data-toast-message="Iniciando sesión...">Iniciar sesión</a>
+                        <a href="{{ url_for('register_company') }}" class="btn btn-primary" data-toast-message="Cargando registro...">Registrar empresa</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash flash-{{ 'success' if category == 'success' else 'error' }}" data-toast="true">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toastStack = document.getElementById('toast-stack');
+            const flashMessages = document.querySelectorAll('.flash[data-toast="true"]');
+
+            flashMessages.forEach((flash) => {
+                const toast = document.createElement('div');
+                toast.className = flash.className + ' toast';
+                toast.innerHTML = '<span class="toast-spinner"></span><span>' + flash.textContent.trim() + '</span>';
+                toastStack.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.add('toast-visible');
+                }, 50);
+
+                setTimeout(() => {
+                    toast.classList.remove('toast-visible');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3600);
+            });
+
+            document.querySelectorAll('[data-toast-message]').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const message = link.getAttribute('data-toast-message');
+                    const toast = document.createElement('div');
+                    toast.className = 'toast toast-visible toast-loading';
+                    toast.innerHTML = '<span class="toast-spinner"></span><span>' + message + '</span>';
+                    toastStack.appendChild(toast);
+
+                    setTimeout(() => {
+                        toast.classList.remove('toast-visible');
+                        setTimeout(() => toast.remove(), 300);
+                    }, 1800);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

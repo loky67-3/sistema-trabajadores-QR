@@ -1,0 +1,866 @@
+{% extends 'base.html' %}
+
+{% block title %}QR Company | Control inteligente de personal{% endblock %}
+
+{% block content %}
+
+<!-- =====================================================
+     HERO PRINCIPAL
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-grid">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <span class="status-dot"></span>
+
+                Plataforma de control empresarial
+
+            </div>
+
+
+            <h1>
+                Controla la asistencia.
+                <span>Sin complicaciones.</span>
+            </h1>
+
+
+            <p class="hero-description">
+
+                Registra empleados, genera credenciales QR,
+                controla entradas y salidas y administra
+                la asistencia de todo tu equipo desde una
+                sola plataforma.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a href="{{ url_for('register_company') }}"
+                   class="btn btn-primary btn-large">
+
+                    Crear mi empresa
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14"></path>
+                        <path d="m13 6 6 6-6 6"></path>
+                    </svg>
+
+                </a>
+
+
+                <a href="{{ url_for('login') }}"
+                   class="btn btn-secondary btn-large">
+
+                    Ya tengo una cuenta
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-trust">
+
+                <div class="trust-item">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7l7-4z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+
+                    <span>Seguro</span>
+
+                </div>
+
+
+                <div class="trust-item">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v5l3 2"></path>
+                    </svg>
+
+                    <span>En tiempo real</span>
+
+                </div>
+
+
+                <div class="trust-item">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4z"></path>
+                        <path d="M8 8h8"></path>
+                        <path d="M8 12h8"></path>
+                        <path d="M8 16h5"></path>
+                    </svg>
+
+                    <span>Reportes</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PANEL QR
+        ================================================== -->
+
+        <div class="hero-preview">
+
+            <div class="preview-window">
+
+                <div class="window-top">
+
+                    <div class="window-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span>
+                        Credencial digital
+                    </span>
+
+                </div>
+
+
+                <div class="employee-preview">
+
+                    <div class="employee-top">
+
+                        <div class="employee-avatar">
+                            AM
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Ana Morales
+                            </strong>
+
+                            <span>
+                                Empleada
+                            </span>
+
+                        </div>
+
+
+                        <div class="online-badge">
+
+                            <span></span>
+
+                            Activa
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-data">
+
+                        <div>
+                            <small>NÚMERO</small>
+                            <strong>EMP-5K204T</strong>
+                        </div>
+
+                        <div>
+                            <small>UBICACIÓN</small>
+                            <strong>Guadalajara</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="qr-main">
+
+                        <div class="qr-frame">
+
+                            <img
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=EMP-5K204T%7CAna%20Morales"
+                                alt="Código QR del empleado">
+
+                        </div>
+
+                        <span>
+                            Escanea para registrar asistencia
+                        </span>
+
+                    </div>
+
+
+                    <div class="attendance-status">
+
+                        <div>
+
+                            <span class="status-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 6 9 17l-5-5"></path>
+                                </svg>
+
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Entrada registrada
+                                </strong>
+
+                                <small>
+                                    Hoy · 07:42 AM
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="badge badge-success">
+                            Presente
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-card floating-card-one">
+
+                <div class="floating-icon blue">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <strong>+24</strong>
+
+                    <span>Asistencias hoy</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-card floating-card-two">
+
+                <div class="floating-icon green">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="m5 12 4 4L19 6"></path>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <strong>98.5%</strong>
+
+                    <span>Asistencia</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ESTADÍSTICAS
+===================================================== -->
+
+<section class="stats-section">
+
+    <div class="stat-card">
+
+        <div class="stat-icon blue">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+
+        </div>
+
+        <div>
+
+            <strong>Empleados</strong>
+
+            <span>Administración centralizada</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon green">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2v20"></path>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+
+        </div>
+
+        <div>
+
+            <strong>Menos errores</strong>
+
+            <span>Registro automático</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon purple">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M3 3v18h18"></path>
+                <path d="m7 16 4-5 3 3 5-7"></path>
+            </svg>
+
+        </div>
+
+        <div>
+
+            <strong>Más control</strong>
+
+            <span>Información organizada</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon orange">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v5l3 2"></path>
+            </svg>
+
+        </div>
+
+        <div>
+
+            <strong>24/7</strong>
+
+            <span>Acceso a tu información</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CARACTERÍSTICAS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            TODO EN UN SOLO LUGAR
+        </span>
+
+        <h2>
+            Todo lo que necesitas
+            para administrar tu personal.
+        </h2>
+
+        <p>
+            Una plataforma sencilla para llevar
+            el control de tus empleados.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <!-- CARD 1 -->
+
+        <article class="feature-card">
+
+            <div class="feature-media qr-media">
+
+                <div class="mini-qr">
+
+                    <img
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=QR-COMPANY"
+                        alt="QR">
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-body">
+
+                <div class="feature-icon blue">
+
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                        <path d="M14 14h3v3h-3z"></path>
+                        <path d="M18 18h3v3h-3z"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    QR por empleado
+                </h3>
+
+                <p>
+                    Cada trabajador puede contar con
+                    una credencial única para registrar
+                    sus entradas y salidas.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 2 -->
+
+        <article class="feature-card">
+
+            <div class="feature-media dashboard-media">
+
+                <div class="fake-dashboard">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-body">
+
+                <div class="feature-icon purple">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 19V5"></path>
+                        <path d="M4 19h16"></path>
+                        <path d="m7 15 3-4 3 2 5-6"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Dashboard empresarial
+                </h3>
+
+                <p>
+                    Visualiza empleados, asistencia,
+                    entradas, salidas y actividad
+                    desde un solo lugar.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 3 -->
+
+        <article class="feature-card">
+
+            <div class="feature-media report-media">
+
+                <div class="report-preview">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-body">
+
+                <div class="feature-icon green">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                        <path d="M8 13h8"></path>
+                        <path d="M8 17h6"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Reportes
+                </h3>
+
+                <p>
+                    Consulta y organiza los registros
+                    de asistencia para tener mayor
+                    control de tu operación.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 4 -->
+
+        <article class="feature-card">
+
+            <div class="feature-media location-media">
+
+                <div class="location-pin">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"></path>
+                        <circle cx="12" cy="10" r="2.5"></circle>
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-body">
+
+                <div class="feature-icon orange">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Organización por zona
+                </h3>
+
+                <p>
+                    Organiza trabajadores por municipio,
+                    sucursal o zona de operación.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CÓMO FUNCIONA
+===================================================== -->
+
+<section class="how-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            ASÍ DE FÁCIL
+        </span>
+
+        <h2>
+            Comienza en minutos.
+        </h2>
+
+        <p>
+            Tres pasos para comenzar a controlar
+            la asistencia de tu equipo.
+        </p>
+
+    </div>
+
+
+    <div class="steps-grid">
+
+
+        <div class="step-card">
+
+            <span class="step-number">
+                01
+            </span>
+
+            <div class="step-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M19 8v6"></path>
+                    <path d="M22 11h-6"></path>
+                </svg>
+
+            </div>
+
+            <h3>
+                Registra tu empresa
+            </h3>
+
+            <p>
+                Crea tu cuenta y configura
+                la información básica de tu empresa.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card">
+
+            <span class="step-number">
+                02
+            </span>
+
+            <div class="step-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    <path d="M14 14h3v3h-3z"></path>
+                    <path d="M18 18h3v3h-3z"></path>
+                </svg>
+
+            </div>
+
+            <h3>
+                Registra empleados
+            </h3>
+
+            <p>
+                Crea trabajadores y genera
+                automáticamente sus credenciales QR.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card">
+
+            <span class="step-number">
+                03
+            </span>
+
+            <div class="step-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+
+            </div>
+
+            <h3>
+                Controla asistencia
+            </h3>
+
+            <p>
+                Escanea el código y registra
+                entradas y salidas de forma rápida.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEGURIDAD
+===================================================== -->
+
+<section class="security-section">
+
+    <div class="security-content">
+
+        <div class="security-icon">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7l7-4z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+            </svg>
+
+        </div>
+
+
+        <div>
+
+            <span class="section-label">
+                DISEÑADO PARA EMPRESAS
+            </span>
+
+            <h2>
+                Tu información,
+                organizada y bajo control.
+            </h2>
+
+            <p>
+                Mantén la información de tus empleados
+                organizada y consulta los registros
+                cuando los necesites.
+            </p>
+
+        </div>
+
+
+        <div class="security-points">
+
+            <div>
+
+                <svg viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"></path>
+                </svg>
+
+                Registros organizados
+
+            </div>
+
+            <div>
+
+                <svg viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"></path>
+                </svg>
+
+                Credenciales únicas
+
+            </div>
+
+            <div>
+
+                <svg viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"></path>
+                </svg>
+
+                Dashboard centralizado
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OFERTA / CTA
+===================================================== -->
+
+<section class="offer-section">
+
+    <div class="offer-glow"></div>
+
+    <div class="offer-content">
+
+        <span class="offer-badge">
+            ✦ EMPIEZA HOY
+        </span>
+
+        <h2>
+            Lleva el control
+            de tu personal al siguiente nivel.
+        </h2>
+
+        <p>
+            Deja atrás los registros manuales
+            y empieza a administrar tu equipo
+            desde una plataforma moderna.
+        </p>
+
+        <div class="offer-actions">
+
+            <a href="{{ url_for('register_company') }}"
+               class="btn btn-white btn-large">
+
+                Registrar empresa
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                </svg>
+
+            </a>
+
+        </div>
+
+        <small>
+            Configuración sencilla · Control centralizado · QR por empleado
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER SIMPLE
+===================================================== -->
+
+<section class="mini-footer">
+
+    <div>
+        <strong>QR Company</strong>
+        <span>Control inteligente de personal</span>
+    </div>
+
+    <span>
+        © 2026 QR Company
+    </span>
+
+</section>
+
+{% endblock %}

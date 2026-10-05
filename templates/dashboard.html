@@ -1,0 +1,4126 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | QR Company{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     SVG ICON SPRITE
+========================================================= -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+    <symbol id="icon-dashboard" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+        <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+        <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+        <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+    </symbol>
+
+    <symbol id="icon-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3"></circle>
+        <path d="M3.5 19c.6-3.2 2.5-5 5.5-5s4.9 1.8 5.5 5"></path>
+        <circle cx="17" cy="9" r="2.3"></circle>
+        <path d="M15.5 14.2c2.7.1 4.3 1.6 5 4.2"></path>
+    </symbol>
+
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 2"></path>
+    </symbol>
+
+    <symbol id="icon-camera" viewBox="0 0 24 24">
+        <path d="M4 7.5h4l1.4-2h5.2l1.4 2H20a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1Z"></path>
+        <circle cx="12" cy="13.5" r="3.5"></circle>
+    </symbol>
+
+    <symbol id="icon-id" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <circle cx="8" cy="12" r="2"></circle>
+        <path d="M13 10h5M13 14h4"></path>
+    </symbol>
+
+    <symbol id="icon-settings" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20h-2.4v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H6V11.6h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L7.3 8.6 9 6.9l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V5h2.4v.7a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.7 1.7-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.1V14h-.1a1.7 1.7 0 0 0-1.6 1Z"></path>
+    </symbol>
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="3.5"></circle>
+        <path d="M5 20c.8-4 3-6 7-6s6.2 2 7 6"></path>
+    </symbol>
+
+    <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 8.5h18C21 16 18 16 18 9Z"></path>
+        <path d="M10 21h4"></path>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="6.5"></circle>
+        <path d="m16 16 5 5"></path>
+    </symbol>
+
+    <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M12 3v12"></path>
+        <path d="m7 10 5 5 5-5"></path>
+        <path d="M4 21h16"></path>
+    </symbol>
+
+    <symbol id="icon-log-in" viewBox="0 0 24 24">
+        <path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5"></path>
+        <path d="m14 8 4 4-4 4"></path>
+        <path d="M9 12h9"></path>
+    </symbol>
+
+    <symbol id="icon-log-out" viewBox="0 0 24 24">
+        <path d="M14 5h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5"></path>
+        <path d="m10 8-4 4 4 4"></path>
+        <path d="M6 12h10"></path>
+    </symbol>
+
+    <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6"></path>
+    </symbol>
+
+    <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"></path>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+    </symbol>
+
+    <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18"></path>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m9 6 6 6-6 6"></path>
+    </symbol>
+
+    <symbol id="icon-qr" viewBox="0 0 24 24">
+        <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"></path>
+        <path d="M14 14h3v3h-3zM18 18h2v2h-2zM17 14h3"></path>
+    </symbol>
+
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+        <path d="M4 7h16"></path>
+        <path d="M9 7V4h6v3"></path>
+        <path d="M7 7l1 14h8l1-14"></path>
+        <path d="M10 11v6M14 11v6"></path>
+    </symbol>
+
+    <symbol id="icon-eye" viewBox="0 0 24 24">
+        <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+        <circle cx="12" cy="12" r="2.5"></circle>
+    </symbol>
+
+    <symbol id="icon-file" viewBox="0 0 24 24">
+        <path d="M6 3h8l4 4v14H6z"></path>
+        <path d="M14 3v5h5M9 13h6M9 17h6"></path>
+    </symbol>
+
+    <symbol id="icon-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+        <path d="M7 3v4M17 3v4M3 10h18"></path>
+    </symbol>
+
+    <symbol id="icon-location" viewBox="0 0 24 24">
+        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+        <circle cx="12" cy="10" r="2.5"></circle>
+    </symbol>
+
+    <symbol id="icon-refresh" viewBox="0 0 24 24">
+        <path d="M20 11a8 8 0 0 0-14-4L4 9"></path>
+        <path d="M4 4v5h5"></path>
+        <path d="M4 13a8 8 0 0 0 14 4l2-2"></path>
+        <path d="M20 20v-5h-5"></path>
+    </symbol>
+
+</svg>
+
+
+<!-- =========================================================
+     DASHBOARD SHELL
+========================================================= -->
+<div class="dashboard-shell">
+
+    <!-- MOBILE MENU -->
+    <button
+        type="button"
+        class="mobile-menu-toggle"
+        id="mobile-menu-button"
+        aria-label="Abrir menú"
+        aria-expanded="false">
+
+        <svg viewBox="0 0 24 24">
+            <use href="#icon-menu"></use>
+        </svg>
+
+    </button>
+
+
+    <div
+        class="sidebar-overlay"
+        id="sidebar-overlay">
+    </div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside
+        class="sidebar"
+        id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-brand-logo">
+                    Q
+                </div>
+
+                <div>
+                    <strong>QR Company</strong>
+                    <span>Control de asistencia</span>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                id="sidebar-close"
+                aria-label="Cerrar menú">
+
+                <svg viewBox="0 0 24 24">
+                    <use href="#icon-close"></use>
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="sidebar-search">
+
+            <svg viewBox="0 0 24 24">
+                <use href="#icon-search"></use>
+            </svg>
+
+            <input
+                type="search"
+                id="sidebar-search"
+                placeholder="Buscar..."
+                autocomplete="off">
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav class="sidebar-nav">
+
+            <div class="sidebar-nav-label">
+                PRINCIPAL
+            </div>
+
+
+            <button
+                class="sidebar-nav-item active"
+                type="button"
+                data-section="overview">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-dashboard"></use>
+                </svg>
+
+                <span>Resumen</span>
+
+            </button>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="workers">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-users"></use>
+                </svg>
+
+                <span>Trabajadores</span>
+
+                <span class="nav-count">
+                    {{ employees|length }}
+                </span>
+
+            </button>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="add-worker">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-plus"></use>
+                </svg>
+
+                <span>Agregar trabajador</span>
+
+            </button>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="attendance">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-clock"></use>
+                </svg>
+
+                <span>Asistencia</span>
+
+            </button>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="scanner">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-camera"></use>
+                </svg>
+
+                <span>Escanear QR</span>
+
+            </button>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="credentials">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-id"></use>
+                </svg>
+
+                <span>Credenciales</span>
+
+            </button>
+
+
+            <div class="sidebar-nav-label">
+                CONFIGURACIÓN
+            </div>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="settings">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-settings"></use>
+                </svg>
+
+                <span>Configuración</span>
+
+            </button>
+
+
+            <button
+                class="sidebar-nav-item"
+                type="button"
+                data-section="profile">
+
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <use href="#icon-user"></use>
+                </svg>
+
+                <span>Mi perfil</span>
+
+            </button>
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+
+                    {% if company.profile_image %}
+                        <img
+                            src="{{ company.profile_image }}"
+                            alt="Perfil">
+                    {% else %}
+                        {{ company.name[:1]|upper }}
+                    {% endif %}
+
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <strong>
+                        {{ company.name }}
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="{{ url_for('logout') }}"
+                class="sidebar-logout">
+
+                <svg viewBox="0 0 24 24">
+                    <use href="#icon-log-out"></use>
+                </svg>
+
+                <span>Cerrar sesión</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+    <main class="dashboard-main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="dashboard-topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="desktop-sidebar-toggle"
+                    id="desktop-sidebar-toggle"
+                    aria-label="Mostrar u ocultar menú">
+
+                    <svg viewBox="0 0 24 24">
+                        <use href="#icon-menu"></use>
+                    </svg>
+
+                </button>
+
+
+                <div class="page-context">
+
+                    <span id="current-section-label">
+                        Panel principal
+                    </span>
+
+                    <strong id="current-section-title">
+                        Resumen
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="topbar-icon-button"
+                    id="notification-button"
+                    aria-label="Notificaciones">
+
+                    <svg viewBox="0 0 24 24">
+                        <use href="#icon-bell"></use>
+                    </svg>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="topbar-profile"
+                    data-section-target="profile">
+
+                    <div class="topbar-profile-avatar">
+
+                        {% if company.profile_image %}
+                            <img
+                                src="{{ company.profile_image }}"
+                                alt="Perfil">
+                        {% else %}
+                            {{ company.name[:1]|upper }}
+                        {% endif %}
+
+                    </div>
+
+                    <div class="topbar-profile-info">
+
+                        <strong>
+                            {{ company.name }}
+                        </strong>
+
+                        <span>
+                            Administrador
+                        </span>
+
+                    </div>
+
+                    <svg viewBox="0 0 24 24">
+                        <use href="#icon-chevron"></use>
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+        <div class="dashboard-content">
+
+
+            <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+            <section
+                class="content-section active"
+                id="section-overview">
+
+
+                <div class="welcome-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            DASHBOARD
+                        </span>
+
+                        <h1>
+                            Hola, {{ company.name }}
+                        </h1>
+
+                        <p>
+                            Aquí tienes el estado actual de tu personal
+                            y la asistencia de hoy.
+                        </p>
+
+                    </div>
+
+
+                    <div class="welcome-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-section-target="add-worker">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-plus"></use>
+                            </svg>
+
+                            Agregar trabajador
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATS -->
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-users"></use>
+                                </svg>
+
+                            </span>
+
+                            <span class="stat-label">
+                                PERSONAL
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat-value">
+                            {{ summary.employees }}
+                        </div>
+
+                        <div class="stat-description">
+                            Trabajadores registrados
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-check"></use>
+                                </svg>
+
+                            </span>
+
+                            <span class="stat-label">
+                                PRESENTES
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat-value">
+                            {{ summary.present_today }}
+                        </div>
+
+                        <div class="stat-description">
+                            Con entrada registrada hoy
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-clock"></use>
+                                </svg>
+
+                            </span>
+
+                            <span class="stat-label">
+                                REGISTROS
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat-value">
+                            {{ summary.records_today }}
+                        </div>
+
+                        <div class="stat-description">
+                            Registros realizados hoy
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-log-in"></use>
+                                </svg>
+
+                            </span>
+
+                            <span class="stat-label">
+                                PENDIENTES
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat-value">
+                            {{ summary.pending }}
+                        </div>
+
+                        <div class="stat-description">
+                            Jornadas sin salida
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+                <div class="overview-grid">
+
+
+                    <div class="module-block">
+
+                        <div class="module-header">
+
+                            <div class="module-header-main">
+
+                                <span class="module-badge">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-clock"></use>
+                                    </svg>
+
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Asistencia de hoy
+                                    </h2>
+
+                                    <p>
+                                        Registra entradas y salidas rápidamente.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-attendance-grid">
+
+                            <button
+                                type="button"
+                                class="quick-action-card"
+                                data-section-target="scanner">
+
+                                <span class="quick-action-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-camera"></use>
+                                    </svg>
+
+                                </span>
+
+                                <strong>
+                                    Escanear QR
+                                </strong>
+
+                                <small>
+                                    Registrar asistencia
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="quick-action-card"
+                                data-section-target="attendance">
+
+                                <span class="quick-action-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-log-in"></use>
+                                    </svg>
+
+                                </span>
+
+                                <strong>
+                                    Entrada / salida
+                                </strong>
+
+                                <small>
+                                    Registro manual
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="quick-action-card"
+                                data-section-target="workers">
+
+                                <span class="quick-action-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-users"></use>
+                                    </svg>
+
+                                </span>
+
+                                <strong>
+                                    Ver trabajadores
+                                </strong>
+
+                                <small>
+                                    Consultar personal
+                                </small>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REPORTS -->
+                    <div class="module-block">
+
+                        <div class="module-header">
+
+                            <div class="module-header-main">
+
+                                <span class="module-badge">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-file"></use>
+                                    </svg>
+
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Reportes
+                                    </h2>
+
+                                    <p>
+                                        Descarga la información de asistencia.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="report-list">
+
+                            <a
+                                href="{{ url_for('daily_log_pdf') }}"
+                                class="report-item">
+
+                                <span class="report-item-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-calendar"></use>
+                                    </svg>
+
+                                </span>
+
+                                <span class="report-item-text">
+
+                                    <strong>
+                                        Bitácora diaria
+                                    </strong>
+
+                                    <small>
+                                        Reporte del día actual
+                                    </small>
+
+                                </span>
+
+                                <svg class="report-arrow" viewBox="0 0 24 24">
+                                    <use href="#icon-download"></use>
+                                </svg>
+
+                            </a>
+
+
+                            <a
+                                href="{{ url_for('weekly_report_pdf') }}"
+                                class="report-item">
+
+                                <span class="report-item-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-calendar"></use>
+                                    </svg>
+
+                                </span>
+
+                                <span class="report-item-text">
+
+                                    <strong>
+                                        Reporte semanal
+                                    </strong>
+
+                                    <small>
+                                        Asistencia de toda la semana
+                                    </small>
+
+                                </span>
+
+                                <svg class="report-arrow" viewBox="0 0 24 24">
+                                    <use href="#icon-download"></use>
+                                </svg>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WEEKLY TABLE -->
+                <div class="module-block">
+
+                    <div class="module-header">
+
+                        <div class="module-header-main">
+
+                            <span class="module-badge">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-calendar"></use>
+                                </svg>
+
+                            </span>
+
+                            <div>
+
+                                <h2>
+                                    Asistencia semanal
+                                </h2>
+
+                                <p>
+                                    Resumen de presencia por trabajador.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Trabajador
+                                    </th>
+
+                                    <th>
+                                        Código
+                                    </th>
+
+                                    {% for current_day in week_dates %}
+
+                                        <th>
+                                            {{ current_day.strftime('%a')|capitalize }}
+                                        </th>
+
+                                    {% endfor %}
+
+                                    <th>
+                                        Total
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                {% for row in employee_week %}
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="employee-table-user">
+
+                                                <div class="employee-avatar">
+
+                                                    <img
+                                                        src="{{ row.employee.image_url }}"
+                                                        alt="{{ row.employee.name }}">
+
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>
+                                                        {{ row.employee.name }}
+                                                    </strong>
+
+                                                    <span>
+                                                        {{ row.employee.municipio }}
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="code-badge">
+                                                {{ row.employee.employee_code }}
+                                            </span>
+
+                                        </td>
+
+
+                                        {% for current_day in week_dates %}
+
+                                            {% set record = row.days[current_day.isoformat()] %}
+
+                                            <td>
+
+                                                {% if record and record.entry_time %}
+
+                                                    <span class="attendance-present">
+                                                        ✓
+                                                    </span>
+
+                                                {% else %}
+
+                                                    <span class="attendance-empty">
+                                                        —
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </td>
+
+                                        {% endfor %}
+
+
+                                        <td>
+
+                                            <strong class="week-total">
+                                                {{ row.present_count }}/7
+                                            </strong>
+
+                                        </td>
+
+                                    </tr>
+
+                                {% else %}
+
+                                    <tr>
+
+                                        <td
+                                            colspan="10"
+                                            class="empty-table">
+
+                                            <div class="empty-state">
+
+                                                <svg viewBox="0 0 24 24">
+                                                    <use href="#icon-users"></use>
+                                                </svg>
+
+                                                <strong>
+                                                    No hay trabajadores registrados
+                                                </strong>
+
+                                                <span>
+                                                    Agrega tu primer trabajador para comenzar.
+                                                </span>
+
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-primary"
+                                                    data-section-target="add-worker">
+
+                                                    <svg viewBox="0 0 24 24">
+                                                        <use href="#icon-plus"></use>
+                                                    </svg>
+
+                                                    Agregar trabajador
+
+                                                </button>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 WORKERS
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-workers">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            PERSONAL
+                        </span>
+
+                        <h1>
+                            Trabajadores
+                        </h1>
+
+                        <p>
+                            Administra todos los trabajadores registrados.
+                        </p>
+
+                    </div>
+
+
+                    <div class="section-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-section-target="add-worker">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-plus"></use>
+                            </svg>
+
+                            Agregar trabajador
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workers-toolbar">
+
+                    <div class="table-search">
+
+                        <svg viewBox="0 0 24 24">
+                            <use href="#icon-search"></use>
+                        </svg>
+
+                        <input
+                            type="search"
+                            id="worker-search"
+                            placeholder="Buscar trabajador o código..."
+                            autocomplete="off">
+
+                    </div>
+
+
+                    <span class="workers-count">
+
+                        {{ employees|length }}
+
+                        trabajador{% if employees|length != 1 %}es{% endif %}
+
+                    </span>
+
+                </div>
+
+
+                <div class="module-block">
+
+                    <div class="table-wrapper">
+
+                        <table class="data-table workers-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Trabajador
+                                    </th>
+
+                                    <th>
+                                        Código
+                                    </th>
+
+                                    <th>
+                                        Municipio
+                                    </th>
+
+                                    <th>
+                                        Registro
+                                    </th>
+
+                                    <th>
+                                        Acciones
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="workers-table-body">
+
+                                {% for employee in employees %}
+
+                                    <tr
+                                        class="worker-row"
+                                        data-search="{{ employee.name|lower }} {{ employee.employee_code|lower }} {{ employee.municipio|lower }}">
+
+
+                                        <td>
+
+                                            <div class="employee-table-user">
+
+                                                <div class="employee-avatar">
+
+                                                    <img
+                                                        src="{{ employee.image_url }}"
+                                                        alt="{{ employee.name }}">
+
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>
+                                                        {{ employee.name }}
+                                                    </strong>
+
+                                                    <span>
+                                                        ID #{{ employee.id }}
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="code-badge">
+                                                {{ employee.employee_code }}
+                                            </span>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="location-text">
+
+                                                <svg viewBox="0 0 24 24">
+                                                    <use href="#icon-location"></use>
+                                                </svg>
+
+                                                {{ employee.municipio }}
+
+                                            </span>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="date-text">
+                                                {{ employee.created_at.strftime('%d/%m/%Y') }}
+                                            </span>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <div class="table-actions">
+
+
+                                                <a
+                                                    href="{{ url_for('employee_credential', employee_id=employee.id) }}"
+                                                    class="table-action"
+                                                    title="Ver credencial">
+
+                                                    <svg viewBox="0 0 24 24">
+                                                        <use href="#icon-eye"></use>
+                                                    </svg>
+
+                                                </a>
+
+
+                                                <a
+                                                    href="{{ url_for('employee_download_qr', employee_id=employee.id) }}"
+                                                    class="table-action"
+                                                    title="Descargar QR">
+
+                                                    <svg viewBox="0 0 24 24">
+                                                        <use href="#icon-qr"></use>
+                                                    </svg>
+
+                                                </a>
+
+
+                                                <a
+                                                    href="{{ url_for('employee_download_credential_pdf', employee_id=employee.id) }}"
+                                                    class="table-action"
+                                                    title="Descargar credencial PDF">
+
+                                                    <svg viewBox="0 0 24 24">
+                                                        <use href="#icon-download"></use>
+                                                    </svg>
+
+                                                </a>
+
+
+                                                <form
+                                                    method="POST"
+                                                    action="{{ url_for('delete_employee', employee_id=employee.id) }}"
+                                                    class="delete-form"
+                                                    onsubmit="return confirm('¿Seguro que deseas eliminar a {{ employee.name }}?');">
+
+                                                    <button
+                                                        type="submit"
+                                                        class="table-action table-action-danger"
+                                                        title="Eliminar">
+
+                                                        <svg viewBox="0 0 24 24">
+                                                            <use href="#icon-trash"></use>
+                                                        </svg>
+
+                                                    </button>
+
+                                                </form>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                {% else %}
+
+                                    <tr>
+
+                                        <td
+                                            colspan="5"
+                                            class="empty-table">
+
+                                            <div class="empty-state">
+
+                                                <svg viewBox="0 0 24 24">
+                                                    <use href="#icon-users"></use>
+                                                </svg>
+
+                                                <strong>
+                                                    No hay trabajadores
+                                                </strong>
+
+                                                <span>
+                                                    Registra el primer trabajador.
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ADD WORKER
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-add-worker">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            PERSONAL
+                        </span>
+
+                        <h1>
+                            Agregar trabajador
+                        </h1>
+
+                        <p>
+                            Registra un trabajador y genera automáticamente
+                            su código, QR y credencial.
+                        </p>
+
+                    </div>
+
+
+                    <div class="section-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-section-target="workers">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-users"></use>
+                            </svg>
+
+                            Ver trabajadores
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="module-block worker-form-module">
+
+
+                    <div class="module-header">
+
+                        <div class="module-header-main">
+
+                            <span class="module-badge">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-user"></use>
+                                </svg>
+
+                            </span>
+
+                            <div>
+
+                                <h2>
+                                    Nuevo trabajador
+                                </h2>
+
+                                <p>
+                                    Completa los datos para crear el registro.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="module-status">
+
+                            <span class="status-dot"></span>
+
+                            Registro nuevo
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        method="POST"
+                        action="{{ url_for('add_employee') }}"
+                        enctype="multipart/form-data"
+                        class="worker-form"
+                        id="worker-form">
+
+
+                        <div class="form-group-section">
+
+
+                            <div class="form-section-heading">
+
+                                <div class="form-section-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-user"></use>
+                                    </svg>
+
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Información del trabajador
+                                    </h3>
+
+                                    <p>
+                                        Datos básicos para identificar al empleado.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-grid">
+
+
+                                <div class="form-field">
+
+                                    <label for="employee-name">
+                                        Nombre completo
+                                        <span>*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="employee-name"
+                                        name="name"
+                                        placeholder="Ej. Juan García López"
+                                        maxlength="150"
+                                        autocomplete="name"
+                                        required>
+
+                                </div>
+
+
+                                <div class="form-field">
+
+                                    <label for="employee-municipio">
+                                        Municipio
+                                        <span>*</span>
+                                    </label>
+
+                                    <select
+                                        id="employee-municipio"
+                                        name="municipio"
+                                        required>
+
+                                        <option value="">
+                                            Seleccionar municipio
+                                        </option>
+
+                                        {% for municipio in municipios %}
+
+                                            <option value="{{ municipio }}">
+                                                {{ municipio }}
+                                            </option>
+
+                                        {% endfor %}
+
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group-section">
+
+
+                            <div class="form-section-heading">
+
+                                <div class="form-section-icon">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-camera"></use>
+                                    </svg>
+
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Fotografía
+                                    </h3>
+
+                                    <p>
+                                        La fotografía aparecerá en la credencial.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="photo-upload-area">
+
+
+                                <label
+                                    for="employee-photo"
+                                    class="photo-upload-box">
+
+
+                                    <div class="photo-upload-icon">
+
+                                        <svg viewBox="0 0 24 24">
+                                            <use href="#icon-camera"></use>
+                                        </svg>
+
+                                    </div>
+
+
+                                    <strong>
+                                        Seleccionar fotografía
+                                    </strong>
+
+
+                                    <span>
+                                        JPG, JPEG, PNG o WEBP
+                                    </span>
+
+
+                                    <input
+                                        type="file"
+                                        id="employee-photo"
+                                        name="photo"
+                                        accept="image/jpeg,image/png,image/webp">
+
+                                </label>
+
+
+                                <div
+                                    class="photo-preview"
+                                    id="employee-photo-preview"
+                                    hidden>
+
+                                    <img
+                                        id="employee-photo-preview-image"
+                                        src=""
+                                        alt="Vista previa">
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="worker-qr-info">
+
+
+                            <div class="worker-qr-info-icon">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-qr"></use>
+                                </svg>
+
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    QR y credencial automáticos
+                                </strong>
+
+                                <p>
+                                    Al guardar, se generará automáticamente
+                                    un código único, su QR y su credencial.
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="worker-process">
+
+
+                            <div class="worker-process-item">
+
+                                <span class="worker-process-number">
+                                    1
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Registrar
+                                    </strong>
+
+                                    <small>
+                                        Se guarda el trabajador.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="worker-process-line"></div>
+
+
+                            <div class="worker-process-item">
+
+                                <span class="worker-process-number">
+                                    2
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Generar QR
+                                    </strong>
+
+                                    <small>
+                                        Se crea un código único.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="worker-process-line"></div>
+
+
+                            <div class="worker-process-item">
+
+                                <span class="worker-process-number">
+                                    3
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Credencial
+                                    </strong>
+
+                                    <small>
+                                        Lista para visualizar y descargar.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-section-target="workers">
+
+                                Cancelar
+
+                            </button>
+
+
+                            <button
+                                type="reset"
+                                class="btn btn-secondary"
+                                id="clear-worker-form">
+
+                                Limpiar
+
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-large">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-plus"></use>
+                                </svg>
+
+                                Registrar trabajador
+
+                            </button>
+
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ATTENDANCE
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-attendance">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CONTROL
+                        </span>
+
+                        <h1>
+                            Asistencia
+                        </h1>
+
+                        <p>
+                            Registra manualmente la entrada o salida de un trabajador.
+                        </p>
+
+                    </div>
+
+
+                    <div class="date-chip">
+
+                        <svg viewBox="0 0 24 24">
+                            <use href="#icon-calendar"></use>
+                        </svg>
+
+                        {{ today.strftime('%d/%m/%Y') }}
+
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-layout">
+
+
+                    <div class="module-block attendance-form-card">
+
+
+                        <div class="module-header">
+
+                            <div class="module-header-main">
+
+                                <span class="module-badge">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-clock"></use>
+                                    </svg>
+
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Registrar asistencia
+                                    </h2>
+
+                                    <p>
+                                        Introduce el código del trabajador.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('scan_attendance') }}"
+                            class="attendance-form">
+
+
+                            <div class="form-field">
+
+                                <label for="attendance-code">
+                                    Código del trabajador
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="attendance-code"
+                                    name="employee_code"
+                                    placeholder="Ej. EMP-A1B2C3"
+                                    autocomplete="off"
+                                    required>
+
+                            </div>
+
+
+                            <div class="attendance-mode">
+
+                                <label class="mode-option">
+
+                                    <input
+                                        type="radio"
+                                        name="mode"
+                                        value="entry"
+                                        checked>
+
+                                    <span class="mode-card">
+
+                                        <span class="mode-icon">
+
+                                            <svg viewBox="0 0 24 24">
+                                                <use href="#icon-log-in"></use>
+                                            </svg>
+
+                                        </span>
+
+                                        <strong>
+                                            Entrada
+                                        </strong>
+
+                                        <small>
+                                            Iniciar jornada
+                                        </small>
+
+                                    </span>
+
+                                </label>
+
+
+                                <label class="mode-option">
+
+                                    <input
+                                        type="radio"
+                                        name="mode"
+                                        value="exit">
+
+                                    <span class="mode-card">
+
+                                        <span class="mode-icon">
+
+                                            <svg viewBox="0 0 24 24">
+                                                <use href="#icon-log-out"></use>
+                                            </svg>
+
+                                        </span>
+
+                                        <strong>
+                                            Salida
+                                        </strong>
+
+                                        <small>
+                                            Finalizar jornada
+                                        </small>
+
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-large attendance-submit">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-check"></use>
+                                </svg>
+
+                                Registrar asistencia
+
+                            </button>
+
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="module-block">
+
+
+                        <div class="module-header">
+
+                            <div class="module-header-main">
+
+                                <span class="module-badge">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-camera"></use>
+                                    </svg>
+
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Registro rápido
+                                    </h2>
+
+                                    <p>
+                                        También puedes utilizar el escáner QR.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="attendance-steps">
+
+
+                            <div class="attendance-step">
+
+                                <span>
+                                    1
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Escanea el QR
+                                    </strong>
+
+                                    <small>
+                                        Usa la cámara del dispositivo.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="attendance-step">
+
+                                <span>
+                                    2
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Identifica al trabajador
+                                    </strong>
+
+                                    <small>
+                                        El código se obtiene automáticamente.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="attendance-step">
+
+                                <span>
+                                    3
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Registra entrada o salida
+                                    </strong>
+
+                                    <small>
+                                        El sistema guarda la hora.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary full-width"
+                            data-section-target="scanner">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-camera"></use>
+                            </svg>
+
+                            Abrir escáner QR
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SCANNER
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-scanner">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            QR SCANNER
+                        </span>
+
+                        <h1>
+                            Escanear QR
+                        </h1>
+
+                        <p>
+                            Utiliza la cámara para registrar rápidamente la asistencia.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="scanner-layout">
+
+
+                    <div class="module-block scanner-card">
+
+
+                        <div class="scanner-header">
+
+                            <div>
+
+                                <span class="scanner-status">
+                                    <span></span>
+                                    Cámara lista
+                                </span>
+
+                                <h2>
+                                    Escáner de asistencia
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="scanner-view">
+
+
+                            <video
+                                id="qr-video"
+                                autoplay
+                                muted
+                                playsinline>
+                            </video>
+
+
+                            <div class="scanner-overlay">
+
+                                <div class="scanner-corners">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                                <div class="scanner-line"></div>
+
+                            </div>
+
+
+                            <div
+                                class="scanner-message"
+                                id="scanner-message">
+
+                                Apunta la cámara al código QR
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="scanner-controls">
+
+
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                id="start-scanner">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-camera"></use>
+                                </svg>
+
+                                Activar cámara
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="stop-scanner">
+
+                                Detener
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="module-block">
+
+
+                        <div class="module-header">
+
+                            <div class="module-header-main">
+
+                                <span class="module-badge">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-qr"></use>
+                                    </svg>
+
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Registro manual
+                                    </h2>
+
+                                    <p>
+                                        Si no puedes usar la cámara.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('scan_attendance') }}"
+                            id="scanner-auto-form"
+                            class="scanner-manual-form">
+
+
+                            <div class="form-field">
+
+                                <label for="scanner-code">
+                                    Código QR / empleado
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="employee_code"
+                                    id="scanner-code"
+                                    placeholder="EMP-XXXXXX"
+                                    autocomplete="off"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="scanner-mode">
+                                    Tipo de registro
+                                </label>
+
+                                <select
+                                    name="mode"
+                                    id="scanner-mode">
+
+                                    <option value="entry">
+                                        Entrada
+                                    </option>
+
+                                    <option value="exit">
+                                        Salida
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary full-width">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-check"></use>
+                                </svg>
+
+                                Registrar
+
+                            </button>
+
+
+                        </form>
+
+
+                        <div class="scanner-divider">
+                            <span>Registro rápido</span>
+                        </div>
+
+
+                        <div class="quick-scan-buttons">
+
+
+                            <button
+                                type="button"
+                                class="quick-scan-button entry"
+                                data-mode="entry">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-log-in"></use>
+                                </svg>
+
+                                Entrada
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="quick-scan-button exit"
+                                data-mode="exit">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-log-out"></use>
+                                </svg>
+
+                                Salida
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CREDENTIALS
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-credentials">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            IDENTIFICACIÓN
+                        </span>
+
+                        <h1>
+                            Credenciales
+                        </h1>
+
+                        <p>
+                            Visualiza y descarga las credenciales de tus trabajadores.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-search credential-search">
+
+                        <svg viewBox="0 0 24 24">
+                            <use href="#icon-search"></use>
+                        </svg>
+
+                        <input
+                            type="search"
+                            id="credential-search"
+                            placeholder="Buscar trabajador..."
+                            autocomplete="off">
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="credentials-grid"
+                    id="credentials-grid">
+
+
+                    {% for employee in employees %}
+
+                        <article
+                            class="credential-mini-card"
+                            data-search="{{ employee.name|lower }} {{ employee.employee_code|lower }}">
+
+
+                            <div class="credential-mini-top">
+
+                                <div class="credential-mini-avatar">
+
+                                    <img
+                                        src="{{ employee.image_url }}"
+                                        alt="{{ employee.name }}">
+
+                                </div>
+
+
+                                <div class="credential-mini-info">
+
+                                    <strong>
+                                        {{ employee.name }}
+                                    </strong>
+
+                                    <span>
+                                        {{ employee.employee_code }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="credential-mini-qr">
+
+                                <img
+                                    src="{{ employee.qr_code_url }}"
+                                    alt="QR de {{ employee.name }}">
+
+                            </div>
+
+
+                            <div class="credential-mini-location">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-location"></use>
+                                </svg>
+
+                                {{ employee.municipio }}
+
+                            </div>
+
+
+                            <div class="credential-mini-actions">
+
+
+                                <a
+                                    href="{{ url_for('employee_credential', employee_id=employee.id) }}"
+                                    class="btn btn-secondary">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-eye"></use>
+                                    </svg>
+
+                                    Ver
+
+                                </a>
+
+
+                                <a
+                                    href="{{ url_for('employee_download_credential_pdf', employee_id=employee.id) }}"
+                                    class="btn btn-primary">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-download"></use>
+                                    </svg>
+
+                                    PDF
+
+                                </a>
+
+
+                            </div>
+
+                        </article>
+
+                    {% else %}
+
+                        <div class="credentials-empty">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-id"></use>
+                            </svg>
+
+                            <h3>
+                                Todavía no hay credenciales
+                            </h3>
+
+                            <p>
+                                Registra un trabajador para generar su credencial.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                data-section-target="add-worker">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-plus"></use>
+                                </svg>
+
+                                Agregar trabajador
+
+                            </button>
+
+                        </div>
+
+                    {% endfor %}
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SETTINGS
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-settings">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            SISTEMA
+                        </span>
+
+                        <h1>
+                            Configuración
+                        </h1>
+
+                        <p>
+                            Ajustes generales de QR Company.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+
+                    <div class="module-block settings-card">
+
+                        <div class="settings-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-users"></use>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Personal
+                            </h3>
+
+                            <p>
+                                Total de trabajadores registrados.
+                            </p>
+
+                            <strong>
+                                {{ summary.employees }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="module-block settings-card">
+
+                        <div class="settings-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-clock"></use>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Control de asistencia
+                            </h3>
+
+                            <p>
+                                Sistema activo para entradas y salidas.
+                            </p>
+
+                            <span class="system-active">
+                                <span></span>
+                                Activo
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="module-block settings-card">
+
+                        <div class="settings-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-qr"></use>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Códigos QR
+                            </h3>
+
+                            <p>
+                                Cada trabajador posee un código único.
+                            </p>
+
+                            <span class="system-active">
+                                <span></span>
+                                Activo
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="module-block settings-card">
+
+                        <div class="settings-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <use href="#icon-file"></use>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Reportes
+                            </h3>
+
+                            <p>
+                                Bitácoras disponibles en PDF.
+                            </p>
+
+                            <span class="system-active">
+                                <span></span>
+                                Disponible
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROFILE
+            ================================================== -->
+            <section
+                class="content-section"
+                id="section-profile">
+
+
+                <div class="section-top">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CUENTA
+                        </span>
+
+                        <h1>
+                            Mi perfil
+                        </h1>
+
+                        <p>
+                            Administra la información de tu empresa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-layout">
+
+
+                    <div class="module-block profile-card">
+
+
+                        <div class="profile-large-avatar">
+
+                            {% if company.profile_image %}
+
+                                <img
+                                    src="{{ company.profile_image }}"
+                                    alt="{{ company.name }}">
+
+                            {% else %}
+
+                                {{ company.name[:1]|upper }}
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <h2>
+                            {{ company.name }}
+                        </h2>
+
+
+                        <p>
+                            {{ company.email }}
+                        </p>
+
+
+                        <span class="profile-role">
+                            Administrador
+                        </span>
+
+                    </div>
+
+
+                    <div class="module-block">
+
+
+                        <div class="module-header">
+
+                            <div class="module-header-main">
+
+                                <span class="module-badge">
+
+                                    <svg viewBox="0 0 24 24">
+                                        <use href="#icon-settings"></use>
+                                    </svg>
+
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Información de cuenta
+                                    </h2>
+
+                                    <p>
+                                        Actualiza los datos de tu perfil.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('update_profile') }}"
+                            enctype="multipart/form-data"
+                            class="profile-form">
+
+
+                            <div class="form-field">
+
+                                <label for="admin-name">
+                                    Nombre de empresa
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="admin-name"
+                                    name="admin_name"
+                                    value="{{ company.name }}"
+                                    maxlength="150">
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="admin-email">
+                                    Correo electrónico
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="admin-email"
+                                    value="{{ company.email }}"
+                                    disabled>
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="profile-image">
+                                    Imagen de perfil
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="profile-image"
+                                    name="profile_image"
+                                    accept="image/jpeg,image/png,image/webp">
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#icon-check"></use>
+                                </svg>
+
+                                Guardar cambios
+
+                            </button>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     EMPLOYEE MODAL
+========================================================= -->
+<div
+    class="modal"
+    id="employee-modal"
+    aria-hidden="true">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-dialog">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="employee-modal">
+
+            <svg viewBox="0 0 24 24">
+                <use href="#icon-close"></use>
+            </svg>
+
+        </button>
+
+        <div id="employee-modal-content"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ATTENDANCE MODAL
+========================================================= -->
+<div
+    class="modal"
+    id="attendance-modal"
+    aria-hidden="true">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-dialog modal-small">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="attendance-modal">
+
+            <svg viewBox="0 0 24 24">
+                <use href="#icon-close"></use>
+            </svg>
+
+        </button>
+
+        <div class="modal-icon-success">
+
+            <svg viewBox="0 0 24 24">
+                <use href="#icon-check"></use>
+            </svg>
+
+        </div>
+
+        <h2>
+            Asistencia registrada
+        </h2>
+
+        <p id="attendance-modal-message">
+            Registro realizado correctamente.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION MODAL
+========================================================= -->
+<div
+    class="modal"
+    id="notification-modal"
+    aria-hidden="true">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-dialog modal-small">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="notification-modal">
+
+            <svg viewBox="0 0 24 24">
+                <use href="#icon-close"></use>
+            </svg>
+
+        </button>
+
+        <div class="modal-icon-info">
+
+            <svg viewBox="0 0 24 24">
+                <use href="#icon-bell"></use>
+            </svg>
+
+        </div>
+
+        <h2>
+            Notificaciones
+        </h2>
+
+        <p>
+            No tienes notificaciones nuevas.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JSQR
+========================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================================
+       SECTION NAVIGATION
+    ====================================================== */
+
+    const navItems = document.querySelectorAll(
+        ".sidebar-nav-item[data-section]"
+    );
+
+    const sections = document.querySelectorAll(
+        ".content-section"
+    );
+
+    const currentTitle = document.getElementById(
+        "current-section-title"
+    );
+
+    const currentLabel = document.getElementById(
+        "current-section-label"
+    );
+
+
+    const sectionTitles = {
+
+        overview: {
+            label: "PANEL PRINCIPAL",
+            title: "Resumen"
+        },
+
+        workers: {
+            label: "PERSONAL",
+            title: "Trabajadores"
+        },
+
+        "add-worker": {
+            label: "PERSONAL",
+            title: "Agregar trabajador"
+        },
+
+        attendance: {
+            label: "CONTROL",
+            title: "Asistencia"
+        },
+
+        scanner: {
+            label: "QR SCANNER",
+            title: "Escanear QR"
+        },
+
+        credentials: {
+            label: "IDENTIFICACIÓN",
+            title: "Credenciales"
+        },
+
+        settings: {
+            label: "SISTEMA",
+            title: "Configuración"
+        },
+
+        profile: {
+            label: "CUENTA",
+            title: "Mi perfil"
+        }
+
+    };
+
+
+    function showSection(sectionName) {
+
+        sections.forEach(function (section) {
+
+            section.classList.remove("active");
+
+        });
+
+
+        navItems.forEach(function (item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+        const target = document.getElementById(
+            "section-" + sectionName
+        );
+
+
+        const navItem = document.querySelector(
+            '.sidebar-nav-item[data-section="' +
+            sectionName +
+            '"]'
+        );
+
+
+        if (target) {
+
+            target.classList.add("active");
+
+        }
+
+
+        if (navItem) {
+
+            navItem.classList.add("active");
+
+        }
+
+
+        if (sectionTitles[sectionName]) {
+
+            currentLabel.textContent =
+                sectionTitles[sectionName].label;
+
+            currentTitle.textContent =
+                sectionTitles[sectionName].title;
+
+        }
+
+
+        closeMobileSidebar();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    navItems.forEach(function (item) {
+
+        item.addEventListener("click", function () {
+
+            showSection(
+                item.dataset.section
+            );
+
+        });
+
+    });
+
+
+    document.querySelectorAll(
+        "[data-section-target]"
+    ).forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const target =
+                button.dataset.sectionTarget;
+
+            if (target) {
+
+                showSection(target);
+
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       SIDEBAR MOBILE
+    ====================================================== */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const sidebarOverlay =
+        document.getElementById("sidebar-overlay");
+
+    const mobileMenuButton =
+        document.getElementById("mobile-menu-button");
+
+    const sidebarClose =
+        document.getElementById("sidebar-close");
+
+
+    function openMobileSidebar() {
+
+        sidebar.classList.add("sidebar-open");
+
+        sidebarOverlay.classList.add(
+            "overlay-visible"
+        );
+
+        mobileMenuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+
+    function closeMobileSidebar() {
+
+        sidebar.classList.remove(
+            "sidebar-open"
+        );
+
+        sidebarOverlay.classList.remove(
+            "overlay-visible"
+        );
+
+        mobileMenuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    if (mobileMenuButton) {
+
+        mobileMenuButton.addEventListener(
+            "click",
+            openMobileSidebar
+        );
+
+    }
+
+
+    if (sidebarClose) {
+
+        sidebarClose.addEventListener(
+            "click",
+            closeMobileSidebar
+        );
+
+    }
+
+
+    if (sidebarOverlay) {
+
+        sidebarOverlay.addEventListener(
+            "click",
+            closeMobileSidebar
+        );
+
+    }
+
+
+    /* =====================================================
+       DESKTOP SIDEBAR
+    ====================================================== */
+
+    const desktopToggle =
+        document.getElementById(
+            "desktop-sidebar-toggle"
+        );
+
+
+    if (desktopToggle) {
+
+        desktopToggle.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "sidebar-collapsed"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       WORKER SEARCH
+    ====================================================== */
+
+    const workerSearch =
+        document.getElementById(
+            "worker-search"
+        );
+
+
+    if (workerSearch) {
+
+        workerSearch.addEventListener(
+            "input",
+            function () {
+
+                const query =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                document.querySelectorAll(
+                    ".worker-row"
+                ).forEach(function (row) {
+
+                    const text =
+                        row.dataset.search || "";
+
+                    row.style.display =
+                        text.includes(query)
+                            ? ""
+                            : "none";
+
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       SIDEBAR SEARCH
+    ====================================================== */
+
+    const sidebarSearch =
+        document.getElementById(
+            "sidebar-search"
+        );
+
+
+    if (sidebarSearch) {
+
+        sidebarSearch.addEventListener(
+            "input",
+            function () {
+
+                const query =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                if (!query) {
+                    return;
+                }
+
+
+                const map = [
+
+                    {
+                        words: [
+                            "trabajador",
+                            "trabajadores",
+                            "empleado",
+                            "personal"
+                        ],
+                        section: "workers"
+                    },
+
+                    {
+                        words: [
+                            "agregar",
+                            "nuevo",
+                            "registrar trabajador"
+                        ],
+                        section: "add-worker"
+                    },
+
+                    {
+                        words: [
+                            "asistencia",
+                            "entrada",
+                            "salida",
+                            "horario"
+                        ],
+                        section: "attendance"
+                    },
+
+                    {
+                        words: [
+                            "qr",
+                            "escanear",
+                            "scanner",
+                            "camara"
+                        ],
+                        section: "scanner"
+                    },
+
+                    {
+                        words: [
+                            "credencial",
+                            "credenciales",
+                            "identificacion"
+                        ],
+                        section: "credentials"
+                    },
+
+                    {
+                        words: [
+                            "configuracion",
+                            "ajustes"
+                        ],
+                        section: "settings"
+                    },
+
+                    {
+                        words: [
+                            "perfil",
+                            "cuenta"
+                        ],
+                        section: "profile"
+                    }
+
+                ];
+
+
+                for (const item of map) {
+
+                    if (
+                        item.words.some(
+                            word =>
+                                word.includes(query) ||
+                                query.includes(word)
+                        )
+                    ) {
+
+                        showSection(
+                            item.section
+                        );
+
+                        break;
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CREDENTIAL SEARCH
+    ====================================================== */
+
+    const credentialSearch =
+        document.getElementById(
+            "credential-search"
+        );
+
+
+    if (credentialSearch) {
+
+        credentialSearch.addEventListener(
+            "input",
+            function () {
+
+                const query =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                document.querySelectorAll(
+                    ".credential-mini-card"
+                ).forEach(function (card) {
+
+                    const text =
+                        card.dataset.search || "";
+
+                    card.style.display =
+                        text.includes(query)
+                            ? ""
+                            : "none";
+
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       PHOTO PREVIEW
+    ====================================================== */
+
+    const photoInput =
+        document.getElementById(
+            "employee-photo"
+        );
+
+    const photoPreview =
+        document.getElementById(
+            "employee-photo-preview"
+        );
+
+    const photoPreviewImage =
+        document.getElementById(
+            "employee-photo-preview-image"
+        );
+
+
+    if (
+        photoInput &&
+        photoPreview &&
+        photoPreviewImage
+    ) {
+
+        photoInput.addEventListener(
+            "change",
+            function () {
+
+                const file =
+                    this.files[0];
+
+
+                if (!file) {
+
+                    photoPreview.hidden = true;
+
+                    photoPreviewImage.src = "";
+
+                    return;
+
+                }
+
+
+                if (
+                    !file.type.startsWith(
+                        "image/"
+                    )
+                ) {
+
+                    alert(
+                        "Selecciona una imagen válida."
+                    );
+
+                    this.value = "";
+
+                    photoPreview.hidden = true;
+
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function (event) {
+
+                        photoPreviewImage.src =
+                            event.target.result;
+
+                        photoPreview.hidden =
+                            false;
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       RESET PHOTO PREVIEW
+    ====================================================== */
+
+    const workerForm =
+        document.getElementById(
+            "worker-form"
+        );
+
+
+    if (workerForm) {
+
+        workerForm.addEventListener(
+            "reset",
+            function () {
+
+                setTimeout(
+                    function () {
+
+                        if (photoPreview) {
+
+                            photoPreview.hidden =
+                                true;
+
+                        }
+
+                        if (photoPreviewImage) {
+
+                            photoPreviewImage.src =
+                                "";
+
+                        }
+
+                    },
+                    50
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       NOTIFICATIONS
+    ====================================================== */
+
+    const notificationButton =
+        document.getElementById(
+            "notification-button"
+        );
+
+    const notificationModal =
+        document.getElementById(
+            "notification-modal"
+        );
+
+
+    if (
+        notificationButton &&
+        notificationModal
+    ) {
+
+        notificationButton.addEventListener(
+            "click",
+            function () {
+
+                notificationModal.classList.add(
+                    "modal-open"
+                );
+
+                notificationModal.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MODALS
+    ====================================================== */
+
+    document.querySelectorAll(
+        "[data-close-modal]"
+    ).forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const id =
+                    button.dataset.closeModal;
+
+                const modal =
+                    document.getElementById(id);
+
+
+                if (modal) {
+
+                    modal.classList.remove(
+                        "modal-open"
+                    );
+
+                    modal.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+    document.querySelectorAll(
+        ".modal-backdrop"
+    ).forEach(function (backdrop) {
+
+        backdrop.addEventListener(
+            "click",
+            function () {
+
+                const modal =
+                    backdrop.closest(".modal");
+
+
+                if (modal) {
+
+                    modal.classList.remove(
+                        "modal-open"
+                    );
+
+                    modal.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       ATTENDANCE QUICK BUTTONS
+    ====================================================== */
+
+    const scannerCode =
+        document.getElementById(
+            "scanner-code"
+        );
+
+    const scannerMode =
+        document.getElementById(
+            "scanner-mode"
+        );
+
+
+    document.querySelectorAll(
+        ".quick-scan-button"
+    ).forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                if (scannerMode) {
+
+                    scannerMode.value =
+                        button.dataset.mode;
+
+                }
+
+
+                if (scannerCode) {
+
+                    scannerCode.focus();
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       QR SCANNER
+    ====================================================== */
+
+    const video =
+        document.getElementById(
+            "qr-video"
+        );
+
+    const startScanner =
+        document.getElementById(
+            "start-scanner"
+        );
+
+    const stopScanner =
+        document.getElementById(
+            "stop-scanner"
+        );
+
+    const scannerMessage =
+        document.getElementById(
+            "scanner-message"
+        );
+
+
+    let scannerStream = null;
+
+    let scannerAnimation = null;
+
+
+    function stopQRScanner() {
+
+        if (scannerAnimation) {
+
+            cancelAnimationFrame(
+                scannerAnimation
+            );
+
+            scannerAnimation = null;
+
+        }
+
+
+        if (scannerStream) {
+
+            scannerStream
+                .getTracks()
+                .forEach(
+                    track => track.stop()
+                );
+
+            scannerStream = null;
+
+        }
+
+
+        if (video) {
+
+            video.srcObject = null;
+
+        }
+
+
+        if (scannerMessage) {
+
+            scannerMessage.textContent =
+                "Apunta la cámara al código QR";
+
+        }
+
+    }
+
+
+    function scanQRCode() {
+
+        if (!video || !scannerStream) {
+            return;
+        }
+
+
+        if (
+            video.readyState ===
+            video.HAVE_ENOUGH_DATA
+        ) {
+
+            const canvas =
+                document.createElement(
+                    "canvas"
+                );
+
+            const context =
+                canvas.getContext(
+                    "2d"
+                );
+
+
+            canvas.width =
+                video.videoWidth;
+
+            canvas.height =
+                video.videoHeight;
+
+
+            context.drawImage(
+                video,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            const imageData =
+                context.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+
+            if (
+                typeof jsQR !==
+                "undefined"
+            ) {
+
+                const code =
+                    jsQR(
+                        imageData.data,
+                        imageData.width,
+                        imageData.height
+                    );
+
+
+                if (code) {
+
+                    processQRCode(
+                        code.data
+                    );
+
+                    return;
+
+                }
+
+            }
+
+        }
+
+
+        scannerAnimation =
+            requestAnimationFrame(
+                scanQRCode
+            );
+
+    }
+
+
+    function processQRCode(data) {
+
+        stopQRScanner();
+
+
+        let employeeCode =
+            data.split("|")[0]
+                .trim()
+                .toUpperCase();
+
+
+        if (!employeeCode) {
+
+            if (scannerMessage) {
+
+                scannerMessage.textContent =
+                    "QR no válido";
+
+            }
+
+            return;
+
+        }
+
+
+        if (scannerCode) {
+
+            scannerCode.value =
+                employeeCode;
+
+        }
+
+
+        if (scannerMode) {
+
+            scannerMode.value =
+                "entry";
+
+        }
+
+
+        if (scannerMessage) {
+
+            scannerMessage.textContent =
+                "QR detectado: " +
+                employeeCode;
+
+        }
+
+
+        const form =
+            document.getElementById(
+                "scanner-auto-form"
+            );
+
+
+        if (form) {
+
+            setTimeout(
+                function () {
+
+                    form.submit();
+
+                },
+                500
+            );
+
+        }
+
+    }
+
+
+    async function startQRScanner() {
+
+        if (!navigator.mediaDevices) {
+
+            alert(
+                "Tu navegador no permite acceder a la cámara."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            stopQRScanner();
+
+
+            scannerStream =
+                await navigator.mediaDevices
+                    .getUserMedia({
+                        video: {
+                            facingMode: {
+                                ideal: "environment"
+                            }
+                        },
+                        audio: false
+                    });
+
+
+            video.srcObject =
+                scannerStream;
+
+
+            await video.play();
+
+
+            if (scannerMessage) {
+
+                scannerMessage.textContent =
+                    "Apunta la cámara al código QR";
+
+            }
+
+
+            scanQRCode();
+
+        } catch (error) {
+
+            console.error(
+                "Error de cámara:",
+                error
+            );
+
+
+            if (scannerMessage) {
+
+                scannerMessage.textContent =
+                    "No se pudo acceder a la cámara";
+
+            }
+
+
+            alert(
+                "No se pudo acceder a la cámara. Verifica los permisos del navegador."
+            );
+
+        }
+
+    }
+
+
+    if (startScanner) {
+
+        startScanner.addEventListener(
+            "click",
+            startQRScanner
+        );
+
+    }
+
+
+    if (stopScanner) {
+
+        stopScanner.addEventListener(
+            "click",
+            stopQRScanner
+        );
+
+    }
+
+
+    /* =====================================================
+       ESCAPE KEY
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key ===
+                "Escape"
+            ) {
+
+                closeMobileSidebar();
+
+                document.querySelectorAll(
+                    ".modal.modal-open"
+                ).forEach(
+                    function (modal) {
+
+                        modal.classList.remove(
+                            "modal-open"
+                        );
+
+                        modal.setAttribute(
+                            "aria-hidden",
+                            "true"
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       PAGE INITIALIZATION
+    ====================================================== */
+
+    showSection("overview");
+
+
+});
+</script>
+
+{% endblock %}
