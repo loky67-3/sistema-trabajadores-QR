@@ -1,86 +1,510 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Control de Personal{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <div class="app-shell">
-        <header class="topbar">
-            <div class="topbar-inner">
-                <div class="brand" aria-label="QR Company">
-                    <div class="brand-badge">Q</div>
-                    <div class="brand-text">
-                        <span class="brand-name">QR Company</span>
-                        <small class="brand-subtitle">Control de asistencia</small>
-                    </div>
-                </div>
 
-                <div class="nav-actions">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#8b0d18">
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <title>{% block title %}Control de Personal{% endblock %}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app-shell">
+
+
+        <!-- =====================================================
+             NAVBAR
+        ====================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-inner">
+
+
+                <!-- LOGO -->
+
+                <a
+                    href="{{ url_for('dashboard') if session.get('company_id') else url_for('login') }}"
+                    class="brand"
+                    aria-label="QR Company"
+                >
+
+                    <div class="brand-mark">
+
+                        <!-- AGUILA -->
+
+                        <svg
+                            class="eagle-icon"
+                            viewBox="0 0 100 100"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+
+                            <!-- Cabeza -->
+
+                            <path
+                                d="
+                                M50 10
+                                C42 10 35 15 32 22
+                                C30 27 31 32 35 36
+                                C28 38 22 43 18 49
+                                C25 49 31 48 37 45
+                                C33 52 30 59 30 66
+                                C30 77 38 87 50 91
+                                C62 87 70 77 70 66
+                                C70 59 67 52 63 45
+                                C69 48 75 49 82 49
+                                C78 43 72 38 65 36
+                                C69 32 70 27 68 22
+                                C65 15 58 10 50 10Z
+                                "
+                            />
+
+                            <!-- Ala izquierda -->
+
+                            <path
+                                d="
+                                M36 43
+                                C25 44 14 48 6 56
+                                C15 57 24 61 32 67
+                                C23 66 15 68 9 71
+                                C19 76 29 78 39 75
+                                C35 65 33 54 36 43Z
+                                "
+                            />
+
+                            <!-- Ala derecha -->
+
+                            <path
+                                d="
+                                M64 43
+                                C75 44 86 48 94 56
+                                C85 57 76 61 68 67
+                                C77 66 85 68 91 71
+                                C81 76 71 78 61 75
+                                C65 65 67 54 64 43Z
+                                "
+                            />
+
+                            <!-- Pico -->
+
+                            <path
+                                d="
+                                M43 31
+                                L50 38
+                                L57 31
+                                L50 44
+                                Z
+                                "
+                                fill="#ffffff"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="brand-text">
+
+                        <span class="brand-name">
+                            QR Company
+                        </span>
+
+                        <span class="brand-subtitle">
+                            Control de asistencia
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =================================================
+                     NAVEGACION
+                ================================================== -->
+
+                <nav
+                    class="nav-actions"
+                    aria-label="Navegacion principal"
+                >
+
                     {% if session.get('company_id') %}
-                        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary" data-toast-message="Cargando dashboard...">Dashboard</a>
-                        <a href="{{ url_for('logout') }}" class="btn btn-danger" data-toast-message="Cerrando sesión...">Cerrar sesión</a>
+
+
+                        <!-- DASHBOARD -->
+
+                        <a
+                            href="{{ url_for('dashboard') }}"
+                            class="nav-link nav-link-dashboard"
+                            data-toast-message="Cargando dashboard..."
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="7"
+                                    height="7"
+                                    rx="1"
+                                />
+
+                                <rect
+                                    x="14"
+                                    y="3"
+                                    width="7"
+                                    height="7"
+                                    rx="1"
+                                />
+
+                                <rect
+                                    x="3"
+                                    y="14"
+                                    width="7"
+                                    height="7"
+                                    rx="1"
+                                />
+
+                                <rect
+                                    x="14"
+                                    y="14"
+                                    width="7"
+                                    height="7"
+                                    rx="1"
+                                />
+
+                            </svg>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- CERRAR SESION -->
+
+                        <a
+                            href="{{ url_for('logout') }}"
+                            class="nav-link nav-link-danger"
+                            data-toast-message="Cerrando sesión..."
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path d="M10 17l5-5-5-5" />
+
+                                <path d="M15 12H3" />
+
+                                <path d="M21 3v18" />
+
+                            </svg>
+
+                            <span>
+                                Cerrar sesión
+                            </span>
+
+                        </a>
+
+
                     {% else %}
-                        <a href="{{ url_for('login') }}" class="btn btn-secondary" data-toast-message="Iniciando sesión...">Iniciar sesión</a>
-                        <a href="{{ url_for('register_company') }}" class="btn btn-primary" data-toast-message="Cargando registro...">Registrar empresa</a>
+
+
+                        <!-- INICIAR SESION -->
+
+                        <a
+                            href="{{ url_for('login') }}"
+                            class="nav-link nav-link-login"
+                            data-toast-message="Iniciando sesión..."
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <circle
+                                    cx="12"
+                                    cy="8"
+                                    r="4"
+                                />
+
+                                <path
+                                    d="
+                                    M4 21
+                                    C4 16.6 7.6 13 12 13
+                                    C16.4 13 20 16.6 20 21
+                                    "
+                                />
+
+                            </svg>
+
+                            <span>
+                                Iniciar sesión
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- REGISTRAR EMPRESA -->
+
+                        <a
+                            href="{{ url_for('register_company') }}"
+                            class="nav-cta"
+                            data-toast-message="Cargando registro..."
+                        >
+
+                            <span>
+                                Registrar empresa
+                            </span>
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path d="M5 12h14" />
+
+                                <path d="m13 6 6 6-6 6" />
+
+                            </svg>
+
+                        </a>
+
+
                     {% endif %}
-                </div>
+
+                </nav>
+
             </div>
+
         </header>
 
+
+
+        <!-- =====================================================
+             CONTENIDO PRINCIPAL
+        ====================================================== -->
+
         <main class="container">
+
+
             {% with messages = get_flashed_messages(with_categories=true) %}
+
                 {% if messages %}
+
                     {% for category, message in messages %}
-                        <div class="flash flash-{{ 'success' if category == 'success' else 'error' }}" data-toast="true">{{ message }}</div>
+
+                        <div
+                            class="flash flash-{{ 'success' if category == 'success' else 'error' }}"
+                            data-toast="true"
+                        >
+
+                            {{ message }}
+
+                        </div>
+
                     {% endfor %}
+
                 {% endif %}
+
             {% endwith %}
 
-            {% block content %}{% endblock %}
+
+
+            {% block content %}
+
+            {% endblock %}
+
+
         </main>
+
     </div>
 
-    <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+
+    <!-- =====================================================
+         TOASTS
+    ====================================================== -->
+
+    <div
+        id="toast-stack"
+        class="toast-stack"
+        aria-live="polite"
+        aria-atomic="true"
+    ></div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script>
+
         document.addEventListener('DOMContentLoaded', () => {
-            const toastStack = document.getElementById('toast-stack');
-            const flashMessages = document.querySelectorAll('.flash[data-toast="true"]');
+
+            const toastStack =
+                document.getElementById('toast-stack');
+
+
+            const flashMessages =
+                document.querySelectorAll(
+                    '.flash[data-toast="true"]'
+                );
+
+
+            /*
+             * FLASH MESSAGES
+             */
 
             flashMessages.forEach((flash) => {
-                const toast = document.createElement('div');
-                toast.className = flash.className + ' toast';
-                toast.innerHTML = '<span class="toast-spinner"></span><span>' + flash.textContent.trim() + '</span>';
+
+                const toast =
+                    document.createElement('div');
+
+
+                toast.className =
+                    flash.className + ' toast';
+
+
+                toast.innerHTML =
+                    '<span class="toast-spinner"></span>' +
+                    '<span>' +
+                    flash.textContent.trim() +
+                    '</span>';
+
+
                 toastStack.appendChild(toast);
 
+
                 setTimeout(() => {
-                    toast.classList.add('toast-visible');
+
+                    toast.classList.add(
+                        'toast-visible'
+                    );
+
                 }, 50);
 
-                setTimeout(() => {
-                    toast.classList.remove('toast-visible');
-                    setTimeout(() => toast.remove(), 300);
-                }, 3600);
-            });
 
-            document.querySelectorAll('[data-toast-message]').forEach((link) => {
-                link.addEventListener('click', (event) => {
-                    const message = link.getAttribute('data-toast-message');
-                    const toast = document.createElement('div');
-                    toast.className = 'toast toast-visible toast-loading';
-                    toast.innerHTML = '<span class="toast-spinner"></span><span>' + message + '</span>';
-                    toastStack.appendChild(toast);
+                setTimeout(() => {
+
+                    toast.classList.remove(
+                        'toast-visible'
+                    );
+
 
                     setTimeout(() => {
-                        toast.classList.remove('toast-visible');
-                        setTimeout(() => toast.remove(), 300);
-                    }, 1800);
-                });
+
+                        toast.remove();
+
+                    }, 300);
+
+                }, 3600);
+
             });
+
+
+
+            /*
+             * NAVEGACION
+             */
+
+            document
+                .querySelectorAll('[data-toast-message]')
+                .forEach((link) => {
+
+                    link.addEventListener(
+                        'click',
+                        () => {
+
+                            const message =
+                                link.getAttribute(
+                                    'data-toast-message'
+                                );
+
+
+                            const toast =
+                                document.createElement(
+                                    'div'
+                                );
+
+
+                            toast.className =
+                                'toast toast-visible toast-loading';
+
+
+                            toast.innerHTML =
+                                '<span class="toast-spinner"></span>' +
+                                '<span>' +
+                                message +
+                                '</span>';
+
+
+                            toastStack.appendChild(
+                                toast
+                            );
+
+
+                            setTimeout(() => {
+
+                                toast.classList.remove(
+                                    'toast-visible'
+                                );
+
+
+                                setTimeout(() => {
+
+                                    toast.remove();
+
+                                }, 300);
+
+                            }, 1800);
+
+                        }
+                    );
+
+                });
+
         });
+
     </script>
+
+
 </body>
+
 </html>

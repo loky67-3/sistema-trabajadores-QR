@@ -2,191 +2,265 @@
 
 {% block title %}QR Company | Control inteligente de personal{% endblock %}
 
+
 {% block content %}
 
-<!-- =====================================================
-     HERO PRINCIPAL
-===================================================== -->
-
-<section class="hero">
-
-    <div class="hero-grid">
-
-        <div class="hero-content">
-
-            <div class="hero-badge">
-
-                <span class="status-dot"></span>
-
-                Plataforma de control empresarial
-
-            </div>
+<!-- =========================================================
+     QR COMPANY
+     LANDING PAGE
+     
+     IMPORTANTE:
+     Todas las clases comienzan con "qc-"
+     para evitar conflictos con base.html
+========================================================= -->
 
 
-            <h1>
-                Controla la asistencia.
-                <span>Sin complicaciones.</span>
-            </h1>
+<main class="qc-page">
 
 
-            <p class="hero-description">
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-                Registra empleados, genera credenciales QR,
-                controla entradas y salidas y administra
-                la asistencia de todo tu equipo desde una
-                sola plataforma.
+    <section class="qc-hero">
 
-            </p>
+        <div class="qc-hero-background"></div>
 
-
-            <div class="hero-actions">
-
-                <a href="{{ url_for('register_company') }}"
-                   class="btn btn-primary btn-large">
-
-                    Crear mi empresa
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-                    </svg>
-
-                </a>
+        <div class="qc-container qc-hero-grid">
 
 
-                <a href="{{ url_for('login') }}"
-                   class="btn btn-secondary btn-large">
+            <!-- =================================================
+                 HERO - TEXTO
+            ================================================== -->
 
-                    Ya tengo una cuenta
+            <div class="qc-hero-copy">
 
-                </a>
+                <div class="qc-eyebrow">
 
-            </div>
+                    <span class="qc-eyebrow-dot"></span>
 
+                    CONTROL EMPRESARIAL
 
-            <div class="hero-trust">
-
-                <div class="trust-item">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7l7-4z"></path>
-                        <path d="m9 12 2 2 4-4"></path>
-                    </svg>
-
-                    <span>Seguro</span>
+                    <span class="qc-eyebrow-line"></span>
 
                 </div>
 
 
-                <div class="trust-item">
+                <h1 class="qc-hero-title">
 
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <path d="M12 7v5l3 2"></path>
-                    </svg>
-
-                    <span>En tiempo real</span>
-
-                </div>
-
-
-                <div class="trust-item">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 4h16v16H4z"></path>
-                        <path d="M8 8h8"></path>
-                        <path d="M8 12h8"></path>
-                        <path d="M8 16h5"></path>
-                    </svg>
-
-                    <span>Reportes</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             PANEL QR
-        ================================================== -->
-
-        <div class="hero-preview">
-
-            <div class="preview-window">
-
-                <div class="window-top">
-
-                    <div class="window-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                    El control de tu personal.
 
                     <span>
-                        Credencial digital
+                        Más simple.
                     </span>
+
+                </h1>
+
+
+                <p class="qc-hero-text">
+
+                    Administra empleados, credenciales QR,
+                    entradas, salidas y asistencia desde
+                    una plataforma diseñada para trabajar
+                    contigo.
+
+                </p>
+
+
+                <!-- BOTONES -->
+
+                <div class="qc-hero-buttons">
+
+                    <a
+                        href="{{ url_for('register_company') }}"
+                        class="qc-button qc-button-primary"
+                    >
+
+                        <span>
+                            Crear mi empresa
+                        </span>
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M5 12h14"></path>
+
+                            <path d="m13 6 6 6-6 6"></path>
+
+                        </svg>
+
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('login') }}"
+                        class="qc-button qc-button-outline"
+                    >
+
+                        Iniciar sesión
+
+                    </a>
 
                 </div>
 
 
-                <div class="employee-preview">
+                <!-- CONFIANZA -->
 
-                    <div class="employee-top">
+                <div class="qc-trust-row">
 
-                        <div class="employee-avatar">
-                            AM
+                    <div class="qc-trust">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7l7-4z"
+                            ></path>
+
+                            <path
+                                d="m9 12 2 2 4-4"
+                            ></path>
+
+                        </svg>
+
+                        <span>
+                            Información organizada
+                        </span>
+
+                    </div>
+
+
+                    <div class="qc-trust">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                            ></circle>
+
+                            <path
+                                d="M12 7v5l3 2"
+                            ></path>
+
+                        </svg>
+
+                        <span>
+                            Control rápido
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 HERO - VISUAL
+            ================================================== -->
+
+            <div class="qc-hero-visual">
+
+
+                <!-- IMAGEN DE OFICINA -->
+
+                <div class="qc-office-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
+                        alt="Oficina empresarial moderna"
+                    >
+
+                </div>
+
+
+                <!-- TARJETA DE CREDENCIAL -->
+
+                <div class="qc-profile-card">
+
+
+                    <div class="qc-profile-header">
+
+                        <div class="qc-profile-user">
+
+                            <div class="qc-profile-avatar">
+                                AM
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Ana Morales
+                                </strong>
+
+                                <span>
+                                    Empleada
+                                </span>
+
+                            </div>
+
                         </div>
 
-                        <div>
 
-                            <strong>
-                                Ana Morales
-                            </strong>
+                        <span class="qc-active">
 
-                            <span>
-                                Empleada
-                            </span>
-
-                        </div>
-
-
-                        <div class="online-badge">
-
-                            <span></span>
+                            <i></i>
 
                             Activa
 
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- INFORMACION -->
+
+                    <div class="qc-profile-info">
+
+                        <div>
+
+                            <small>
+                                IDENTIFICADOR
+                            </small>
+
+                            <strong>
+                                EMP-5K204T
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small>
+                                UBICACIÓN
+                            </small>
+
+                            <strong>
+                                Guadalajara
+                            </strong>
+
                         </div>
 
                     </div>
 
 
-                    <div class="employee-data">
 
-                        <div>
-                            <small>NÚMERO</small>
-                            <strong>EMP-5K204T</strong>
-                        </div>
+                    <!-- QR -->
 
-                        <div>
-                            <small>UBICACIÓN</small>
-                            <strong>Guadalajara</strong>
-                        </div>
+                    <div class="qc-qr-area">
 
-                    </div>
-
-
-                    <div class="qr-main">
-
-                        <div class="qr-frame">
+                        <div class="qc-qr-box">
 
                             <img
-                                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=EMP-5K204T%7CAna%20Morales"
-                                alt="Código QR del empleado">
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=EMP-5K204T%7CAna%20Morales"
+                                alt="Código QR de Ana Morales"
+                            >
 
                         </div>
+
 
                         <span>
                             Escanea para registrar asistencia
@@ -195,17 +269,25 @@
                     </div>
 
 
-                    <div class="attendance-status">
 
-                        <div>
+                    <!-- ESTADO -->
 
-                            <span class="status-icon">
+                    <div class="qc-attendance">
+
+                        <div class="qc-attendance-left">
+
+                            <div class="qc-check">
 
                                 <svg viewBox="0 0 24 24">
-                                    <path d="M20 6 9 17l-5-5"></path>
+
+                                    <path
+                                        d="m5 12 4 4L19 6"
+                                    ></path>
+
                                 </svg>
 
-                            </span>
+                            </div>
+
 
                             <div>
 
@@ -213,16 +295,16 @@
                                     Entrada registrada
                                 </strong>
 
-                                <small>
+                                <span>
                                     Hoy · 07:42 AM
-                                </small>
+                                </span>
 
                             </div>
 
                         </div>
 
 
-                        <span class="badge badge-success">
+                        <span class="qc-present">
                             Presente
                         </span>
 
@@ -230,46 +312,235 @@
 
                 </div>
 
+
+                <!-- TARJETA FLOTANTE -->
+
+                <div class="qc-floating qc-floating-top">
+
+                    <div class="qc-floating-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M12 5v14"
+                            ></path>
+
+                            <path
+                                d="M5 12h14"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            +24
+                        </strong>
+
+                        <span>
+                            Asistencias hoy
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="qc-floating qc-floating-bottom">
+
+                    <div class="qc-floating-icon qc-floating-success">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="m5 12 4 4L19 6"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            98.5%
+                        </strong>
+
+                        <span>
+                            Asistencia
+                        </span>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
+        </div>
 
-            <div class="floating-card floating-card-one">
+    </section>
 
-                <div class="floating-icon blue">
+
+
+    <!-- =====================================================
+         NUMEROS / BENEFICIOS
+    ====================================================== -->
+
+    <section class="qc-metrics">
+
+        <div class="qc-container qc-metrics-grid">
+
+
+            <div class="qc-metric">
+
+                <div class="qc-metric-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5v14"></path>
+
+                        <path
+                            d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+                        ></path>
+
+                        <circle
+                            cx="9"
+                            cy="7"
+                            r="4"
+                        ></circle>
+
+                        <path
+                            d="M22 21v-2a4 4 0 0 0-3-3.87"
+                        ></path>
+
+                        <path
+                            d="M16 3.13a4 4 0 0 1 0 7.75"
+                        ></path>
+
                     </svg>
 
                 </div>
 
+
                 <div>
 
-                    <strong>+24</strong>
+                    <strong>
+                        Tu equipo
+                    </strong>
 
-                    <span>Asistencias hoy</span>
+                    <span>
+                        En un solo lugar
+                    </span>
 
                 </div>
 
             </div>
 
 
-            <div class="floating-card floating-card-two">
 
-                <div class="floating-icon green">
+            <div class="qc-metric">
+
+                <div class="qc-metric-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <path d="m5 12 4 4L19 6"></path>
+
+                        <path
+                            d="M3 12h18"
+                        ></path>
+
+                        <path
+                            d="M12 3v18"
+                        ></path>
+
                     </svg>
 
                 </div>
 
+
                 <div>
 
-                    <strong>98.5%</strong>
+                    <strong>
+                        Menos trabajo
+                    </strong>
 
-                    <span>Asistencia</span>
+                    <span>
+                        Menos registros manuales
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="qc-metric">
+
+                <div class="qc-metric-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M3 3v18h18"
+                        ></path>
+
+                        <path
+                            d="m7 16 4-5 3 3 5-7"
+                        ></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Más control
+                    </strong>
+
+                    <span>
+                        Información organizada
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="qc-metric">
+
+                <div class="qc-metric-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9"
+                        ></circle>
+
+                        <path
+                            d="M12 7v5l3 2"
+                        ></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Disponible
+                    </strong>
+
+                    <span>
+                        Cuando lo necesites
+                    </span>
 
                 </div>
 
@@ -277,590 +548,854 @@
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- =====================================================
-     ESTADÍSTICAS
-===================================================== -->
+    <!-- =====================================================
+         SECCION PRINCIPAL
+    ====================================================== -->
 
-<section class="stats-section">
+    <section class="qc-section">
 
-    <div class="stat-card">
-
-        <div class="stat-icon blue">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-
-        </div>
-
-        <div>
-
-            <strong>Empleados</strong>
-
-            <span>Administración centralizada</span>
-
-        </div>
-
-    </div>
+        <div class="qc-container">
 
 
-    <div class="stat-card">
+            <!-- ENCABEZADO -->
 
-        <div class="stat-icon green">
+            <div class="qc-section-heading">
 
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2v20"></path>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
+                <span class="qc-section-label">
+                    UNA PLATAFORMA
+                </span>
 
-        </div>
+                <h2>
+                    Todo tu control empresarial
+                    <span>en un solo lugar.</span>
+                </h2>
 
-        <div>
+                <p>
+                    Diseñado para que administrar personas
+                    sea más rápido, claro y sencillo.
+                </p>
 
-            <strong>Menos errores</strong>
-
-            <span>Registro automático</span>
-
-        </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-        <div class="stat-icon purple">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M3 3v18h18"></path>
-                <path d="m7 16 4-5 3 3 5-7"></path>
-            </svg>
-
-        </div>
-
-        <div>
-
-            <strong>Más control</strong>
-
-            <span>Información organizada</span>
-
-        </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-        <div class="stat-icon orange">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v5l3 2"></path>
-            </svg>
-
-        </div>
-
-        <div>
-
-            <strong>24/7</strong>
-
-            <span>Acceso a tu información</span>
-
-        </div>
-
-    </div>
-
-</section>
+            </div>
 
 
 
-<!-- =====================================================
-     CARACTERÍSTICAS
-===================================================== -->
+            <!-- =================================================
+                 FEATURE 01
+            ================================================== -->
 
-<section class="section">
-
-    <div class="section-heading">
-
-        <span class="section-label">
-            TODO EN UN SOLO LUGAR
-        </span>
-
-        <h2>
-            Todo lo que necesitas
-            para administrar tu personal.
-        </h2>
-
-        <p>
-            Una plataforma sencilla para llevar
-            el control de tus empleados.
-        </p>
-
-    </div>
+            <article class="qc-feature qc-feature-large">
 
 
-    <div class="feature-grid">
-
-
-        <!-- CARD 1 -->
-
-        <article class="feature-card">
-
-            <div class="feature-media qr-media">
-
-                <div class="mini-qr">
+                <div class="qc-feature-image">
 
                     <img
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=QR-COMPANY"
-                        alt="QR">
+                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+                        alt="Equipo empresarial trabajando"
+                        loading="lazy"
+                    >
+
+                    <div class="qc-image-overlay"></div>
+
+
+                    <div class="qc-image-label">
+
+                        <span></span>
+
+                        Plataforma activa
+
+                    </div>
 
                 </div>
+
+
+                <div class="qc-feature-content">
+
+                    <div class="qc-feature-number">
+                        01
+                    </div>
+
+
+                    <div class="qc-feature-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="3"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="3"
+                                y="14"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <path
+                                d="M14 14h3v3h-3z"
+                            ></path>
+
+                            <path
+                                d="M18 18h3v3h-3z"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <h3>
+                        Una credencial QR
+                        para cada empleado.
+                    </h3>
+
+
+                    <p>
+                        Cada trabajador obtiene una identificación
+                        única que puedes utilizar para registrar
+                        asistencia de manera rápida.
+                    </p>
+
+
+                    <div class="qc-feature-list">
+
+                        <div>
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
+
+                            Identificador único
+
+                        </div>
+
+
+                        <div>
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
+
+                            Código QR individual
+
+                        </div>
+
+
+                        <div>
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
+
+                            Registro rápido
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 FEATURE GRID
+            ================================================== -->
+
+            <div class="qc-feature-grid">
+
+
+                <!-- DASHBOARD -->
+
+                <article class="qc-small-feature">
+
+                    <div class="qc-small-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=85"
+                            alt="Personas trabajando en equipo"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="qc-small-content">
+
+                        <div class="qc-small-icon">
+
+                            <svg viewBox="0 0 24 24">
+
+                                <path
+                                    d="M4 19V5"
+                                ></path>
+
+                                <path
+                                    d="M4 19h16"
+                                ></path>
+
+                                <path
+                                    d="m7 15 3-4 3 2 5-6"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <span class="qc-small-number">
+                            02
+                        </span>
+
+
+                        <h3>
+                            Dashboard
+                            empresarial
+                        </h3>
+
+
+                        <p>
+                            Visualiza empleados y actividad
+                            desde una interfaz centralizada.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- REPORTES -->
+
+                <article class="qc-small-feature">
+
+                    <div class="qc-small-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=85"
+                            alt="Análisis empresarial"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="qc-small-content">
+
+                        <div class="qc-small-icon">
+
+                            <svg viewBox="0 0 24 24">
+
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                ></path>
+
+                                <path
+                                    d="M14 2v6h6"
+                                ></path>
+
+                                <path
+                                    d="M8 13h8"
+                                ></path>
+
+                                <path
+                                    d="M8 17h6"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <span class="qc-small-number">
+                            03
+                        </span>
+
+
+                        <h3>
+                            Reportes
+                            organizados
+                        </h3>
+
+
+                        <p>
+                            Consulta tus registros de asistencia
+                            cuando los necesites.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- UBICACIONES -->
+
+                <article class="qc-small-feature">
+
+                    <div class="qc-small-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85"
+                            alt="Oficina moderna"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="qc-small-content">
+
+                        <div class="qc-small-icon">
+
+                            <svg viewBox="0 0 24 24">
+
+                                <path
+                                    d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"
+                                ></path>
+
+                                <circle
+                                    cx="12"
+                                    cy="10"
+                                    r="3"
+                                ></circle>
+
+                            </svg>
+
+                        </div>
+
+
+                        <span class="qc-small-number">
+                            04
+                        </span>
+
+
+                        <h3>
+                            Organización
+                            por zona
+                        </h3>
+
+
+                        <p>
+                            Administra trabajadores por municipio,
+                            sucursal o zona.
+                        </p>
+
+                    </div>
+
+                </article>
 
             </div>
 
+        </div>
 
-            <div class="feature-body">
+    </section>
 
-                <div class="feature-icon blue">
 
-                    <svg viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                        <path d="M14 14h3v3h-3z"></path>
-                        <path d="M18 18h3v3h-3z"></path>
-                    </svg>
 
-                </div>
+    <!-- =====================================================
+         COMO FUNCIONA
+    ====================================================== -->
 
-                <h3>
-                    QR por empleado
-                </h3>
+    <section class="qc-process">
+
+        <div class="qc-container">
+
+
+            <div class="qc-section-heading qc-heading-light">
+
+                <span class="qc-section-label">
+                    PROCESO SIMPLE
+                </span>
+
+                <h2>
+                    Empieza en
+                    <span>tres pasos.</span>
+                </h2>
 
                 <p>
-                    Cada trabajador puede contar con
-                    una credencial única para registrar
-                    sus entradas y salidas.
+                    Sin procesos complicados.
+                    Configura tu empresa y comienza.
                 </p>
 
             </div>
 
-        </article>
+
+
+            <div class="qc-process-grid">
+
+
+                <!-- PASO 01 -->
+
+                <article class="qc-process-card">
+
+                    <span class="qc-process-number">
+                        01
+                    </span>
+
+
+                    <div class="qc-process-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+                            ></path>
+
+                            <circle
+                                cx="9"
+                                cy="7"
+                                r="4"
+                            ></circle>
+
+                            <path
+                                d="M19 8v6"
+                            ></path>
+
+                            <path
+                                d="M22 11h-6"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <h3>
+                        Registra tu empresa
+                    </h3>
+
+
+                    <p>
+                        Crea tu cuenta y configura
+                        la información de tu empresa.
+                    </p>
+
+                </article>
 
 
 
-        <!-- CARD 2 -->
+                <!-- PASO 02 -->
 
-        <article class="feature-card">
+                <article class="qc-process-card">
 
-            <div class="feature-media dashboard-media">
+                    <span class="qc-process-number">
+                        02
+                    </span>
 
-                <div class="fake-dashboard">
 
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="qc-process-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="3"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="3"
+                                y="14"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <path
+                                d="M14 14h3v3h-3z"
+                            ></path>
+
+                            <path
+                                d="M18 18h3v3h-3z"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <h3>
+                        Registra empleados
+                    </h3>
+
+
+                    <p>
+                        Añade trabajadores y genera
+                        sus credenciales QR.
+                    </p>
+
+                </article>
+
+
+
+                <!-- PASO 03 -->
+
+                <article class="qc-process-card">
+
+                    <span class="qc-process-number">
+                        03
+                    </span>
+
+
+                    <div class="qc-process-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20 6 9 17l-5-5"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <h3>
+                        Controla asistencia
+                    </h3>
+
+
+                    <p>
+                        Escanea el código y registra
+                        entradas y salidas.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SEGURIDAD
+    ====================================================== -->
+
+    <section class="qc-security">
+
+        <div class="qc-container qc-security-grid">
+
+
+            <div class="qc-security-visual">
+
+                <div class="qc-security-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1100&q=85"
+                        alt="Equipo empresarial"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="qc-security-badge">
+
+                    <div>
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7l7-4z"
+                            ></path>
+
+                            <path
+                                d="m9 12 2 2 4-4"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <span>
+                        Control centralizado
+                    </span>
 
                 </div>
 
             </div>
 
 
-            <div class="feature-body">
 
-                <div class="feature-icon purple">
+            <div class="qc-security-content">
 
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 19V5"></path>
-                        <path d="M4 19h16"></path>
-                        <path d="m7 15 3-4 3 2 5-6"></path>
-                    </svg>
+                <span class="qc-section-label">
+                    CONTROL EMPRESARIAL
+                </span>
 
-                </div>
 
-                <h3>
-                    Dashboard empresarial
-                </h3>
+                <h2>
+                    Información clara.
+                    <span>Decisiones más simples.</span>
+                </h2>
+
 
                 <p>
-                    Visualiza empleados, asistencia,
-                    entradas, salidas y actividad
-                    desde un solo lugar.
+                    Mantén tus registros de personal
+                    organizados y consulta la información
+                    que necesitas desde un solo lugar.
                 </p>
 
-            </div>
 
-        </article>
-
+                <div class="qc-security-list">
 
 
-        <!-- CARD 3 -->
+                    <div>
 
-        <article class="feature-card">
+                        <span class="qc-list-check">
 
-            <div class="feature-media report-media">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
 
-                <div class="report-preview">
+                        </span>
 
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                        Registros organizados
 
-                </div>
-
-            </div>
+                    </div>
 
 
-            <div class="feature-body">
+                    <div>
 
-                <div class="feature-icon green">
+                        <span class="qc-list-check">
 
-                    <svg viewBox="0 0 24 24">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <path d="M14 2v6h6"></path>
-                        <path d="M8 13h8"></path>
-                        <path d="M8 17h6"></path>
-                    </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
 
-                </div>
+                        </span>
 
-                <h3>
-                    Reportes
-                </h3>
+                        Credenciales individuales
 
-                <p>
-                    Consulta y organiza los registros
-                    de asistencia para tener mayor
-                    control de tu operación.
-                </p>
-
-            </div>
-
-        </article>
+                    </div>
 
 
+                    <div>
 
-        <!-- CARD 4 -->
+                        <span class="qc-list-check">
 
-        <article class="feature-card">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
 
-            <div class="feature-media location-media">
+                        </span>
 
-                <div class="location-pin">
+                        Información centralizada
 
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"></path>
-                        <circle cx="12" cy="10" r="2.5"></circle>
-                    </svg>
+                    </div>
+
+
+                    <div>
+
+                        <span class="qc-list-check">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="m5 12 4 4L19 6"></path>
+                            </svg>
+
+                        </span>
+
+                        Control de asistencia
+
+                    </div>
 
                 </div>
 
             </div>
 
+        </div>
 
-            <div class="feature-body">
-
-                <div class="feature-icon orange">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Organización por zona
-                </h3>
-
-                <p>
-                    Organiza trabajadores por municipio,
-                    sucursal o zona de operación.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- =====================================================
-     CÓMO FUNCIONA
-===================================================== -->
+    <!-- =====================================================
+         CTA FINAL
+    ====================================================== -->
 
-<section class="how-section">
+    <section class="qc-final">
 
-    <div class="section-heading">
-
-        <span class="section-label">
-            ASÍ DE FÁCIL
-        </span>
-
-        <h2>
-            Comienza en minutos.
-        </h2>
-
-        <p>
-            Tres pasos para comenzar a controlar
-            la asistencia de tu equipo.
-        </p>
-
-    </div>
+        <div class="qc-final-background"></div>
 
 
-    <div class="steps-grid">
+        <div class="qc-container qc-final-content">
 
 
-        <div class="step-card">
+            <div class="qc-final-mark">
 
-            <span class="step-number">
-                01
-            </span>
+                <svg
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
 
-            <div class="step-icon">
+                    <path
+                        fill="currentColor"
+                        d="
+                        M50 10
+                        C42 10 35 15 32 22
+                        C30 27 31 32 35 36
+                        C28 38 22 43 18 49
+                        C25 49 31 48 37 45
+                        C33 52 30 59 30 66
+                        C30 77 38 87 50 91
+                        C62 87 70 77 70 66
+                        C70 59 67 52 63 45
+                        C69 48 75 49 82 49
+                        C78 43 72 38 65 36
+                        C69 32 70 27 68 22
+                        C65 15 58 10 50 10Z
+                        "
+                    />
 
-                <svg viewBox="0 0 24 24">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M19 8v6"></path>
-                    <path d="M22 11h-6"></path>
                 </svg>
 
             </div>
 
-            <h3>
-                Registra tu empresa
-            </h3>
 
-            <p>
-                Crea tu cuenta y configura
-                la información básica de tu empresa.
-            </p>
-
-        </div>
-
-
-
-        <div class="step-card">
-
-            <span class="step-number">
-                02
+            <span class="qc-final-label">
+                QR COMPANY
             </span>
 
-            <div class="step-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="3" width="7" height="7"></rect>
-                    <rect x="3" y="14" width="7" height="7"></rect>
-                    <path d="M14 14h3v3h-3z"></path>
-                    <path d="M18 18h3v3h-3z"></path>
-                </svg>
-
-            </div>
-
-            <h3>
-                Registra empleados
-            </h3>
-
-            <p>
-                Crea trabajadores y genera
-                automáticamente sus credenciales QR.
-            </p>
-
-        </div>
-
-
-
-        <div class="step-card">
-
-            <span class="step-number">
-                03
-            </span>
-
-            <div class="step-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M20 6 9 17l-5-5"></path>
-                </svg>
-
-            </div>
-
-            <h3>
-                Controla asistencia
-            </h3>
-
-            <p>
-                Escanea el código y registra
-                entradas y salidas de forma rápida.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SEGURIDAD
-===================================================== -->
-
-<section class="security-section">
-
-    <div class="security-content">
-
-        <div class="security-icon">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M12 3l7 4v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V7l7-4z"></path>
-                <path d="m9 12 2 2 4-4"></path>
-            </svg>
-
-        </div>
-
-
-        <div>
-
-            <span class="section-label">
-                DISEÑADO PARA EMPRESAS
-            </span>
 
             <h2>
-                Tu información,
-                organizada y bajo control.
+                El siguiente nivel
+                <span>del control de personal.</span>
             </h2>
 
+
             <p>
-                Mantén la información de tus empleados
-                organizada y consulta los registros
-                cuando los necesites.
+                Comienza hoy y transforma la manera
+                en que administras a tu equipo.
             </p>
 
-        </div>
 
+            <a
+                href="{{ url_for('register_company') }}"
+                class="qc-final-button"
+            >
 
-        <div class="security-points">
-
-            <div>
-
-                <svg viewBox="0 0 24 24">
-                    <path d="m5 12 4 4L19 6"></path>
-                </svg>
-
-                Registros organizados
-
-            </div>
-
-            <div>
+                Crear mi empresa
 
                 <svg viewBox="0 0 24 24">
-                    <path d="m5 12 4 4L19 6"></path>
-                </svg>
 
-                Credenciales únicas
+                    <path
+                        d="M5 12h14"
+                    ></path>
 
-            </div>
+                    <path
+                        d="m13 6 6 6-6 6"
+                    ></path>
 
-            <div>
-
-                <svg viewBox="0 0 24 24">
-                    <path d="m5 12 4 4L19 6"></path>
-                </svg>
-
-                Dashboard centralizado
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     OFERTA / CTA
-===================================================== -->
-
-<section class="offer-section">
-
-    <div class="offer-glow"></div>
-
-    <div class="offer-content">
-
-        <span class="offer-badge">
-            ✦ EMPIEZA HOY
-        </span>
-
-        <h2>
-            Lleva el control
-            de tu personal al siguiente nivel.
-        </h2>
-
-        <p>
-            Deja atrás los registros manuales
-            y empieza a administrar tu equipo
-            desde una plataforma moderna.
-        </p>
-
-        <div class="offer-actions">
-
-            <a href="{{ url_for('register_company') }}"
-               class="btn btn-white btn-large">
-
-                Registrar empresa
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M5 12h14"></path>
-                    <path d="m13 6 6 6-6 6"></path>
                 </svg>
 
             </a>
 
+
+            <small>
+                Configuración sencilla · Credenciales QR · Control centralizado
+            </small>
+
         </div>
 
-        <small>
-            Configuración sencilla · Control centralizado · QR por empleado
-        </small>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =====================================================
-     FOOTER SIMPLE
-===================================================== -->
 
-<section class="mini-footer">
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
-    <div>
-        <strong>QR Company</strong>
-        <span>Control inteligente de personal</span>
-    </div>
+    <footer class="qc-footer">
 
-    <span>
-        © 2026 QR Company
-    </span>
+        <div class="qc-container qc-footer-inner">
 
-</section>
+
+            <div class="qc-footer-brand">
+
+                <div class="qc-footer-logo">
+
+                    <svg
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+
+                        <path
+                            fill="currentColor"
+                            d="
+                            M50 10
+                            C42 10 35 15 32 22
+                            C30 27 31 32 35 36
+                            C28 38 22 43 18 49
+                            C25 49 31 48 37 45
+                            C33 52 30 59 30 66
+                            C30 77 38 87 50 91
+                            C62 87 70 77 70 66
+                            C70 59 67 52 63 45
+                            C69 48 75 49 82 49
+                            C78 43 72 38 65 36
+                            C69 32 70 27 68 22
+                            C65 15 58 10 50 10Z
+                            "
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        QR Company
+                    </strong>
+
+                    <span>
+                        Control inteligente de personal
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="qc-footer-copy">
+
+                © 2026 QR Company
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</main>
 
 {% endblock %}
